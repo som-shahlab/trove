@@ -1,9 +1,9 @@
 LABEL	NAME	TIER	IGNORE_CASE	REGEX	NOTES
-0	numeric	4	1	[1-9][0-9]{0,2}([.][0-9]+)*\s*(°|degree[s]*)(f|fahrenheit|c|celcius)
-0	numeric	4	1	([1-9][0-9]{0,2}|[0][.][0-9]+)([%]|percent)
-0	numeric	4	1	[1-9][,]*[0-9]{0,3}\s*(mg|ml|mcg/hr|mcg|gram)
-0	numeric	4	1	[(]*[1-9][0-9]{2}[)]*[-][0-9]{3}[-][0-9]{4}|(pgr|pager)\s*[0-9]{3,}
-0	numeric	4	1	[*=_-]{3,}
+0	numeric	4	1	[1-9][0-9]{0,2}([.][0-9]+)*\s*(°|degree[s]*)(f|fahrenheit|c|celcius)	
+0	numeric	4	1	([1-9][0-9]{0,2}|[0][.][0-9]+)([%]|percent)	
+0	numeric	4	1	[1-9][,]*[0-9]{0,3}\s*(mg|ml|mcg/hr|mcg|gram)	
+0	numeric	4	1	[(]*[1-9][0-9]{2}[)]*[-][0-9]{3}[-][0-9]{4}|(pgr|pager)\s*[0-9]{3,}	
+0	numeric	4	1	[*=_-]{3,}	
 1	misc_disorders	4	1	(non[-]*)*calcified (nodule|granuloma|plaquing|mass[e]*)[s]*	masses
 1	misc_disorders	4	1	(((epi|calci)[a-z]+|lung|hilar|renal|sacral|pancreas|ampullary|bladder|underlying|LV) )*mass(es)*	masses
 1	misc_disorders	4	1	\b(mass(es)*)\b	masses
@@ -24,9 +24,9 @@ LABEL	NAME	TIER	IGNORE_CASE	REGEX	NOTES
 1	misc_disorders	4	1	((skin|sclerotic|gastric|ostial|sacral|liver|deformity|facial|splenic)\s*)*((laceration|lesion)[s]*)	laceration / lesion
 1	misc_disorders	4	1	((left|right|nonsustained|hyperdynamic|impaired|poor|slow|first[- ]+degree)\s*)*((non-sinus|(supra|intra|atrio)*ventricular|wall|end)\s*)+(rhythm|end diastolic pressure|blood product[s]*|motion abnormalities|outflow tract obstruction|enlargement|block|response|systolic dysfunction|septal defect|hypertrophy|inflow pattern|fibrillation|dilatation|hemorrhage|diastolic collapse|failure|dysfunction|tachycardia arrest|tachycardia[s]*|arrythmia[s]*|ectopy|conduction delay)	ventricular function
 1	misc_disorders	4	1	((RUL|((right|left)( middle)* lobe)|aspiration|mycoplasma|pneumocystis carinii|klebsiella|ventilator[- ]related)\s*)*pneumonia	pneumonia
-1	changes	4	1	(mental status|(nonspecific )*(ST(-T)*|T)( (segment|wave))*|EKG|MS|vision|cardi[ao]pulm(onary)*|weight) change[s]*
-1	pulmonary_spatial	4	1	(chronic obstructive pulmonary disease|((chronic|acute|ischemic) )*(cardio)*pulmonary (artery hypertension|vascular congestion|hyperinflation|consolidation|hypertension|infiltrate|sarcoidosis|contusion|process|effusion|disease|overload|embolism|sequelae|process|embolus|nodule|status|edema)[s]*)
-1	pulmonary_spatial	4	0	((right|left|L|R)[- ]+side[d]*|bilateral|right/left|right|left|lower|upper|R[/ ]+L|RUL|RUQ|LE) (ventricular enlargement|gastrointestinal bleed|gastrointestinal bleed|abdominal tenderness|atrial enlargement|extremity edema|disorientation|septic emboli|pneumothorax|hemiparesis|hemiparesis|infiltrates|tenderness|pneumonia|confusion|effusions|confusion|weakness|hematoma|edema)
-0	hospital_units	4	1	(intensive care|oncology|infectious disease|(ct )*surgery|neurosurgery|radiation oncology|neuro[-]*oncology|trauma|operating|emergency) ((was|were) consulted|consult|consulted|consultation)
-0	hospital_units	4	1	(intensive care|oncology|infectious disease|(ct )*surgery|neurosurgery|radiation oncology|neuro[-]*oncology|trauma|operating|emergency) (service|unit|room|bay|dept|department)
-0	hospital_units	4	1	psychiatric (nurse|case manager|stay|facility)|mental health provider
+1	changes	4	1	(mental status|(nonspecific )*(ST(-T)*|T)( (segment|wave))*|EKG|MS|vision|cardi[ao]pulm(onary)*|weight) change[s]*	
+1	pulmonary_spatial	4	1	(chronic obstructive pulmonary disease|((chronic|acute|ischemic) )*(cardio)*pulmonary (artery hypertension|vascular congestion|hyperinflation|consolidation|hypertension|infiltrate|sarcoidosis|contusion|process|effusion|disease|overload|embolism|sequelae|process|embolus|nodule|status|edema)[s]*)	
+1	pulmonary_spatial	4	0	((right|left|L|R)[- ]+side[d]*|bilateral|right/left|right|left|lower|upper|R[/ ]+L|RUL|RUQ|LE) (ventricular enlargement|gastrointestinal bleed|gastrointestinal bleed|abdominal tenderness|atrial enlargement|extremity edema|disorientation|septic emboli|pneumothorax|hemiparesis|hemiparesis|infiltrates|tenderness|pneumonia|confusion|effusions|confusion|weakness|hematoma|edema)	
+0	hospital_units	4	1	(intensive care|oncology|infectious disease|(ct )*surgery|neurosurgery|radiation oncology|neuro[-]*oncology|trauma|operating|emergency) ((was|were) consulted|consult|consulted|consultation)	
+0	hospital_units	4	1	(intensive care|oncology|infectious disease|(ct )*surgery|neurosurgery|radiation oncology|neuro[-]*oncology|trauma|operating|emergency) (service|unit|room|bay|dept|department)	
+0	hospital_units	4	1	psychiatric (nurse|case manager|stay|facility)|mental health provider	
