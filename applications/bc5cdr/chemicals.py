@@ -1,9 +1,3 @@
-import re
-import functools
-import itertools
-import collections
-import pandas as pd
-
 import collections
 from trove.labelers.tools import *
 from trove.labelers.labeling import *
@@ -213,7 +207,7 @@ class ChemicalLabelingFunctions(object):
         target_concepts = [sty for sty in self.class_map if
                            self.class_map[sty] == 1]
         specialist_1 = load_specialist_abbrvs(fpath,
-                                              umls,3
+                                              umls,
                                               target_concepts=target_concepts,
                                               filter_ambiguous=True)
         target_concepts = [sty for sty in self.class_map if
@@ -451,7 +445,7 @@ class ChemicalLabelingFunctions(object):
                 r'''((alpha|beta|gamma)[-][T])''',
                 re.compile(r'''(PG[-]9|U[-]II)'''),
                 re.compile(r'''(BPO|GSH|DFU|CsA|Srl|HOE|GVG|PAN|NMDA)'''),
-                re.compile(r'''(TCR|MZ|HBsAg|AraG|LR132|SSRI[s]*|HBeAg|LR132|BD10[0-9]{2}|GNC92H2|SSR103800|CGRP)'''),
+                re.compile(r'''(TCR|MZ|HBsAg|AraG|LR132|SSRI[s]*|HBeAg|BD10[0-9]{2}|GNC92H2|SSR103800|CGRP)'''),
                 # peptides and proteins with less than 15 amino acids ARE annotated
                 r'''(angiotensin([- ]ii)*)''',
                 r'''(u[- ]ii|urotensin[- ]ii)''',
@@ -493,7 +487,8 @@ class ChemicalLabelingFunctions(object):
             # ----------------------------------------------------------------------
             # Hyphen token
             # ----------------------------------------------------------------------
-            def get_subtokens(dictionary, split_chars=['-'], min_occur=20):
+            def get_subtokens(dictionary, split_chars=None, min_occur=20):
+                split_chars = ['-'] if not split_chars else split_chars
                 freq = collections.Counter()
                 for term in dictionary:
                     for ch in split_chars:

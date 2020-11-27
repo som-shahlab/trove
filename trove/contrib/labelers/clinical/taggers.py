@@ -1,7 +1,7 @@
 import re
 from itertools import product
-from inkfish.data.dataloaders.contexts import Span, Relation
 from collections import defaultdict, namedtuple
+from trove.dataloaders.contexts import Span, Relation
 
 
 def get_text(words, offsets):
@@ -111,7 +111,7 @@ def dict_matcher(sentence,
         # ignore whitespace when matching dictionary terms
         text = span.text
         if ignore_whitespace:
-            text = re.sub(r'''\s{2,}|\n{1,}''', ' ', span.text).strip()
+            text = re.sub(r'''\s{2,}|\n+''', ' ', span.text).strip()
 
         # search for matches in all dictionaries
         for name in dictionaries:

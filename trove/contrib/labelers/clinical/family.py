@@ -17,7 +17,7 @@ PATIENT = 1
 OTHER   = 2
 ABSTAIN = 0
 
-rgx_relatives = re.compile(r'''\b(((grand)*(mother|father)|grand(m|p)a)([']*s)*|((parent|(daught|sist|broth)er|son|cousin)([']*s)*))\b''', re.I)
+rgx_relatives = re.compile(r'''\b(((grand)*(mother|father)|grand([mp])a)([']*s)*|((parent|(daught|sist|broth)er|son|cousin)([']*s)*))\b''', re.I)
 
 
 def LF_relative(span):

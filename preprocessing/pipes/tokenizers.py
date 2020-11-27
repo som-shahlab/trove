@@ -313,7 +313,7 @@ def ct_tokenizer(nlp):
     :param nlp:
     :return:
     """
-    prefix_re = re.compile(r'''^([\["'()*+-?/\<\>#%]+|[><][=])+''')
+    prefix_re = re.compile(r'''^([\["'()*+-?/<>#%]+|[><][=])+''')
     suffix_re = re.compile(r'''([\]"'),-.:;*]|'s)$''')
     infix_re  = re.compile(r'''[%(),-./;=?]+''')  # spaCy SBD break w/o [.]
 

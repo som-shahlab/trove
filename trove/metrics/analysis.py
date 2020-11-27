@@ -1,3 +1,4 @@
+import torch
 import numpy as np
 import scipy.sparse as sparse
 from scipy.sparse import issparse
