@@ -1,12 +1,12 @@
 # Trove 
 
-**Preprint**: [Trove: Ontology-driven Weak Supervision for Medical Entity Classification] (https://arxiv.org/abs/2008.01972)
+**Preprint**: [Trove: Ontology-driven Weak Supervision for Medical Entity Classification](https://arxiv.org/abs/2008.01972)
 
 See the `manuscript` branch for the preprint's code
 
-
 Trove is a weakly supervised framework for training medical named entity recognition (NER) classifiers without hand-labeled training data.
-***Trove is currently in-development software!***. Let us know when you find bugs.
+
+***Trove is actively in-development***. Let us know when you find bugs.
 
 ## Installation
 
