@@ -1,40 +1,40 @@
 LABEL	NAME	TIER	IGNORE_CASE	REGEX	NOTES
-0	non_chemicals	4	1	\b([A-Za-z0-9]+?[rlntd]ase[s]*)\b
-0	non_chemicals	4	1	[A-Za-z0-9]+ factor[s]*
-0	non_chemicals	4	1	(angiotensinogen)
-0	non_chemicals	4	1	(guarana|(panax )*ginseng)
-0	non_chemicals	4	1	\b(anti[a-z]+)\b
-0	non_chemicals	4	1	(cocaine (abuse|addiction|overdose))
-0	non_chemicals	4	1	((renal)\s*(angiotensinogen) (mRNA|expression))
-0	non_chemicals	4	1	(atrial natriuretic factor( \[\s*ANF\s*\])*)
-0	non_chemicals	4	1	(fibrinolysis inhibitor[s]*)
-0	non_chemicals	4	1	((brain )*biogenic amines)
-0	non_chemicals	4	1	([-]\s*(associated|dependent|related|treated|acting|controlled|induced|containing|fold|increasing|adjusted|month|specific))
-1	misc_chemicals	4	1	(oral contraceptives)
-1	misc_chemicals	4	1	([A-Z]){2}[0-9]{3,}
-1	misc_chemicals	4	1	\b(ACEi|ACE inhibitor[s]*)\b
-1	misc_chemicals	4	1	(corticosteroid[s]*|(oral[- ])*contraceptive[s]*)
-1	misc_chemicals	4	1	(calcium|cacl[(]2[)])
-1	misc_chemicals	4	1	([l][- ](glutathione|arginine))
-1	misc_chemicals	4	1	(appetite[- ]suppressant[s]*( drugs)*)
-1	misc_chemicals	4	1	(calcium channel blocker[s]*|calcium chloride|CaCl)
-1	misc_chemicals	4	1	(simvastatin[- ]ezetimibe)
-1	misc_chemicals	4	1	([snp][-](perillyl alcohol|pyrimidinyl|choloroaniline|acetylcysteine|limonene))
-1	misc_chemicals	4	1	((alpha|beta|gamma)[-][T])
-1	misc_chemicals	4	0	(PG[-]9|U[-]II)
-1	misc_chemicals	4	0	(BPO|GSH|DFU|CsA|Srl|HOE|GVG|PAN|NMDA)
-1	misc_chemicals	4	0	(TCR|MZ|HBsAg|AraG|LR132|SSRI[s]*|HBeAg|LR132|BD10[0-9]{2}|GNC92H2|SSR103800|CGRP)
-1	misc_chemicals	4	1	(angiotensin([- ]ii)*)
-1	misc_chemicals	4	1	(u[- ]ii|urotensin[- ]ii)
+0	non_chemicals	4	1	\b([A-Za-z0-9]+?[rlntd]ase[s]*)\b	
+0	non_chemicals	4	1	[A-Za-z0-9]+ factor[s]*	
+0	non_chemicals	4	1	(angiotensinogen)	
+0	non_chemicals	4	1	(guarana|(panax )*ginseng)	
+0	non_chemicals	4	1	\b(anti[a-z]+)\b	
+0	non_chemicals	4	1	(cocaine (abuse|addiction|overdose))	
+0	non_chemicals	4	1	((renal)\s*(angiotensinogen) (mRNA|expression))	
+0	non_chemicals	4	1	(atrial natriuretic factor( \[\s*ANF\s*\])*)	
+0	non_chemicals	4	1	(fibrinolysis inhibitor[s]*)	
+0	non_chemicals	4	1	((brain )*biogenic amines)	
+0	non_chemicals	4	1	([-]\s*(associated|dependent|related|treated|acting|controlled|induced|containing|fold|increasing|adjusted|month|specific))	
+1	misc_chemicals	4	1	(oral contraceptives)	
+1	misc_chemicals	4	1	([A-Z]){2}[0-9]{3,}	
+1	misc_chemicals	4	1	\b(ACEi|ACE inhibitor[s]*)\b	
+1	misc_chemicals	4	1	(corticosteroid[s]*|(oral[- ])*contraceptive[s]*)	
+1	misc_chemicals	4	1	(calcium|cacl[(]2[)])	
+1	misc_chemicals	4	1	([l][- ](glutathione|arginine))	
+1	misc_chemicals	4	1	(appetite[- ]suppressant[s]*( drugs)*)	
+1	misc_chemicals	4	1	(calcium channel blocker[s]*|calcium chloride|CaCl)	
+1	misc_chemicals	4	1	(simvastatin[- ]ezetimibe)	
+1	misc_chemicals	4	1	([snp][-](perillyl alcohol|pyrimidinyl|choloroaniline|acetylcysteine|limonene))	
+1	misc_chemicals	4	1	((alpha|beta|gamma)[-][T])	
+1	misc_chemicals	4	0	(PG[-]9|U[-]II)	
+1	misc_chemicals	4	0	(BPO|GSH|DFU|CsA|Srl|HOE|GVG|PAN|NMDA)	
+1	misc_chemicals	4	0	(TCR|MZ|HBsAg|AraG|LR132|SSRI[s]*|HBeAg|LR132|BD10[0-9]{2}|GNC92H2|SSR103800|CGRP)	
+1	misc_chemicals	4	1	(angiotensin([- ]ii)*)	
+1	misc_chemicals	4	1	(u[- ]ii|urotensin[- ]ii)	
 1	misc_chemicals	4	1	bradykinin	comprised of 9 amino acids
-1	misc_chemicals	4	1	(d[- ]pen(icillamine)*)
-1	misc_chemicals	4	1	(lipopolysaccharide|alkylating agents)
-1	misc_chemicals	4	1	(pegylated (interferon|IFN)( alpha[- ]2[ab])*)
-1	misc_chemicals	4	1	(\[3H\])
-1	misc_chemicals	4	1	(CaCl|LAM|GSH|PAN|H2O|AVP|LR132)
-1	glue_tokens	4	1	(\[[0-9][-.])
-1	glue_tokens	4	1	(\[\s*3H\s*\])
-1	glue_tokens	4	1	(thiazolyl|amino|phenyl|ethyl|butyl|nonane|3H)[\]]
-1	glue_tokens	4	1	([-](methyl|ethyl|carboline|dimethoxy|alpha|beta|delta|gamma|glyceryl|thiazolyl)[-])
-1	glue_tokens	4	0	[-]([1-9]|[A-Z])[-]
-0	parentheses	4	1	[(](P|p|n)\s*([><=]+|(less|great)(er)*)|(ml|mg|kg|g|(year|day|month)[s]*)[)]|[(][0-9]+[%][)]
+1	misc_chemicals	4	1	(d[- ]pen(icillamine)*)	
+1	misc_chemicals	4	1	(lipopolysaccharide|alkylating agents)	
+1	misc_chemicals	4	1	(pegylated (interferon|IFN)( alpha[- ]2[ab])*)	
+1	misc_chemicals	4	1	(\[3H\])	
+1	misc_chemicals	4	1	(CaCl|LAM|GSH|PAN|H2O|AVP|LR132)	
+1	glue_tokens	4	1	(\[[0-9][-.])	
+1	glue_tokens	4	1	(\[\s*3H\s*\])	
+1	glue_tokens	4	1	(thiazolyl|amino|phenyl|ethyl|butyl|nonane|3H)[\]]	
+1	glue_tokens	4	1	([-](methyl|ethyl|carboline|dimethoxy|alpha|beta|delta|gamma|glyceryl|thiazolyl)[-])	
+1	glue_tokens	4	0	[-]([1-9]|[A-Z])[-]	
+0	parentheses	4	1	[(](P|p|n)\s*([><=]+|(less|great)(er)*)|(ml|mg|kg|g|(year|day|month)[s]*)[)]|[(][0-9]+[%][)]	

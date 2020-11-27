@@ -1,31 +1,31 @@
 LABEL	NAME	TIER	IGNORE_CASE	REGEX	NOTES
-1	char_grams	4	1	^(psych|necro|nephro|hyper|throm|hypo|acro|hemo)[A-Za-z]+?([rlt]ic)$
-1	char_grams	4	1	^(hepato|hemato|nephro|cardio|neuro|myelo|oto)*toxic(ities|ity)*$
-1	diseases_1	4	1	(([A-Za-z]+\s*) and ([A-Za-z]+\s*) ((neuro)*toxicity|injury|lesion[s]*|impairment|effusion[s]*|deficit[s]*))
-1	diseases_1	4	1	([A-Za-z]+) and ([A-Za-z]+) (insufficiency|(dysfunction|carcinoma|cancer|syndrome|disorder|disease)[s]*)
-1	diseases_1	4	1	\b(non[-](small|hodgkin)|veno[-]occlusive|end[-]stage|HBV[-]HIV|Q[-]T)\b	# hyphens
-1	diseases_1	4	1	(increase[s]* in (blood pressure|heart rate|locomotor activity|dural( and cortical) blood flow))	# increases/decreases in X
-1	diseases_1	4	1	((reduction|decrease)[s*] in (MAP|glomerular number|(arterial )*blood pressure))	# increases/decreases in X
-1	diseases_1	4	1	((respiratory|hypothalamic|corticostriatal|tubular|biventricular|myocardial|hepatic|systolic|cranial nerve|sexual) dysfunction[s]*)	# increases/decreases in X
-1	diseases_1	4	1	(myocardial( cell)*|hepatocellular|mitochondrial|proteinuric|hippocampal|cerebellum|myocardial|neuronal|cardiac|hepatic|bladder|tissue|axonal|kidney|renal|liver|cord) (injury|damage)	# injuries
-1	diseases_1	4	1	(malignant ([A-Za-z]+ )*(glioma|tumor)[s]*)
-1	diseases_1	4	1	(([A-Za-z]+)'s|wolff[- ]+parkinson[- ]+white|haemolytic[- ]+uraemic|guillain[- ]+barr|hematologic|cholestatic|rabbit)([- ]+like)* syndrome
-1	diseases_1	4	1	diabetic( hyperalgesia)*|diabetes
-1	diseases_1	4	1	(adenocarcinoma|calcification|angiosarcoma|enlargement|disorders|cirrhosis|carcinoma|cancer|injury) (in|of) the (central nervous system|oral cavity|bladder|artery|ureter|brain|aorta|liver)	# anatomy findings
-1	diseases_1	4	1	\b[A-Za-z-]+'s (syndrome|disease)\b	# common disease patterns
-1	diseases_1	4	1	((artery )*calcification)|(calcification of the [A-Za-z]+)	# common disease patterns
-1	diseases_1	4	1	([Dd]uchenne('s)* (muscular )*dystrophy|DMD)	# dystrophy
-1	diseases_1	4	1	(ventricular tachyarrhythmias|loss of consciousness|tachyarrhythmias|hyperhidrosis|hypertensive|cardiomegaly|weight gain|hypotension|weight loss|glucosuria|hoarding)	# common findings
-1	diseases_2	4	1	(hyperactive|convulsive|haemorrhage|depressed|deformation[s]*)
-1	diseases_2	4	1	\b((sugar|drug) dependency|nicotine-induced nystagmus|nystagmus|NIN)\b
-1	diseases_2	4	1	(weakness of extremities|transverse limb deficiency|increase in locomotor activity|palpebral twitching)	# movement/muscule issues
-1	diseases_2	4	1	(choreoathetoid movement[s]*|choreatiform hyperkinesias)	# movement/muscule issues
-1	diseases_2	4	1	(tender joints|tenderness|swelling|morning stiffness|excessive flexion)	# movement/muscule issues             
-1	diseases_2	4	1	(valve|valvular|valvular heart) (regurgitation|abnormalit(y|ies))	# cardiac
-1	diseases_2	4	1	(atherosclerotic obstruction|cardiac remodelling)	# cardiac           
-1	diseases_2	4	1	(cholestatic|renovascular|renal and kidney) disease[s]*	# neurological/renal
-1	diseases_2	4	1	(cranial nerve|hepatic and renal|cardiac|renal) dysfunction[s]*	# neurological/renal
-1	diseases_2	4	1	(neuronal loss|cranial nerve deficits|hippocampal injury|behavioral abnormalities|deficits in communication|repetitive behaviors|impaired immediate free recall)	# neurological/renal
-1	diseases_2	4	1	(vanishing bile duct|renal and hepatic failure|hepatic impairment|deterioration of renal function|abnormal liver function)	# neurological/renal
-0	non_diseases	4	1	([-]\s*(associated|dependent|related|treated|acting|controlled|induced|containing|fold|increasing|adjusted|month|specific))	# drug induced / associated effects aren't labeled
-0	non_diseases	4	1	(toxic ((side )*effect[s]*|agent[s]*|action|state|reaction|range|death[s]*|profile|assault[s]*)|(highly|minimally) toxic)	# toxic effects aren't diseases
+1	char_grams	4	1	^(psych|necro|nephro|hyper|throm|hypo|acro|hemo)[A-Za-z]+?([rlt]ic)$	
+1	char_grams	4	1	^(hepato|hemato|nephro|cardio|neuro|myelo|oto)*toxic(ities|ity)*$	
+1	diseases_1	4	1	(([A-Za-z]+\s*) and ([A-Za-z]+\s*) ((neuro)*toxicity|injury|lesion[s]*|impairment|effusion[s]*|deficit[s]*))	
+1	diseases_1	4	1	([A-Za-z]+) and ([A-Za-z]+) (insufficiency|(dysfunction|carcinoma|cancer|syndrome|disorder|disease)[s]*)	
+1	diseases_1	4	1	\b(non[-](small|hodgkin)|veno[-]occlusive|end[-]stage|HBV[-]HIV|Q[-]T)\b	hyphens
+1	diseases_1	4	1	(increase[s]* in (blood pressure|heart rate|locomotor activity|dural( and cortical) blood flow))	increases/decreases in X
+1	diseases_1	4	1	((reduction|decrease)[s*] in (MAP|glomerular number|(arterial )*blood pressure))	increases/decreases in X
+1	diseases_1	4	1	((respiratory|hypothalamic|corticostriatal|tubular|biventricular|myocardial|hepatic|systolic|cranial nerve|sexual) dysfunction[s]*)	increases/decreases in X
+1	diseases_1	4	1	(myocardial( cell)*|hepatocellular|mitochondrial|proteinuric|hippocampal|cerebellum|myocardial|neuronal|cardiac|hepatic|bladder|tissue|axonal|kidney|renal|liver|cord) (injury|damage)	injuries
+1	diseases_1	4	1	(malignant ([A-Za-z]+ )*(glioma|tumor)[s]*)	
+1	diseases_1	4	1	(([A-Za-z]+)'s|wolff[- ]+parkinson[- ]+white|haemolytic[- ]+uraemic|guillain[- ]+barr|hematologic|cholestatic|rabbit)([- ]+like)* syndrome	
+1	diseases_1	4	1	diabetic( hyperalgesia)*|diabetes	
+1	diseases_1	4	1	(adenocarcinoma|calcification|angiosarcoma|enlargement|disorders|cirrhosis|carcinoma|cancer|injury) (in|of) the (central nervous system|oral cavity|bladder|artery|ureter|brain|aorta|liver)	anatomy findings
+1	diseases_1	4	1	\b[A-Za-z-]+'s (syndrome|disease)\b	common disease patterns
+1	diseases_1	4	1	((artery )*calcification)|(calcification of the [A-Za-z]+)	common disease patterns
+1	diseases_1	4	1	([Dd]uchenne('s)* (muscular )*dystrophy|DMD)	dystrophy
+1	diseases_1	4	1	(ventricular tachyarrhythmias|loss of consciousness|tachyarrhythmias|hyperhidrosis|hypertensive|cardiomegaly|weight gain|hypotension|weight loss|glucosuria|hoarding)	common findings
+1	diseases_2	4	1	(hyperactive|convulsive|haemorrhage|depressed|deformation[s]*)	
+1	diseases_2	4	1	\b((sugar|drug) dependency|nicotine-induced nystagmus|nystagmus|NIN)\b	
+1	diseases_2	4	1	(weakness of extremities|transverse limb deficiency|increase in locomotor activity|palpebral twitching)	movement/muscule issues
+1	diseases_2	4	1	(choreoathetoid movement[s]*|choreatiform hyperkinesias)	movement/muscule issues
+1	diseases_2	4	1	(tender joints|tenderness|swelling|morning stiffness|excessive flexion)	movement/muscule issues             
+1	diseases_2	4	1	(valve|valvular|valvular heart) (regurgitation|abnormalit(y|ies))	cardiac
+1	diseases_2	4	1	(atherosclerotic obstruction|cardiac remodelling)	cardiac           
+1	diseases_2	4	1	(cholestatic|renovascular|renal and kidney) disease[s]*	neurological/renal
+1	diseases_2	4	1	(cranial nerve|hepatic and renal|cardiac|renal) dysfunction[s]*	neurological/renal
+1	diseases_2	4	1	(neuronal loss|cranial nerve deficits|hippocampal injury|behavioral abnormalities|deficits in communication|repetitive behaviors|impaired immediate free recall)	neurological/renal
+1	diseases_2	4	1	(vanishing bile duct|renal and hepatic failure|hepatic impairment|deterioration of renal function|abnormal liver function)	neurological/renal
+0	non_diseases	4	1	([-]\s*(associated|dependent|related|treated|acting|controlled|induced|containing|fold|increasing|adjusted|month|specific))	drug induced / associated effects aren't labeled
+0	non_diseases	4	1	(toxic ((side )*effect[s]*|agent[s]*|action|state|reaction|range|death[s]*|profile|assault[s]*)|(highly|minimally) toxic)	toxic effects aren't diseases
