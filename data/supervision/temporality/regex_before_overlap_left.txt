@@ -1,0 +1,18 @@
+has been \b.+ing\b
+has continued
+has developed
+have developed
+has experienced
+has maintained
+has remained
+has tolerated
+no change
+no major change
+no known cancer(s)?
+\b(she|he)\b does note
+\b(she|he)\b continues to (have|be)?
+\b(she|he)\b has continued 
+\b(she|he)\b.+recovering
+is continuing to recover
+\bis\b.+smoker
+recurrent episodes of

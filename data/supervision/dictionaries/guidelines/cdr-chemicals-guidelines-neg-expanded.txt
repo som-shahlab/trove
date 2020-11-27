@@ -1,0 +1,183 @@
+protein
+alkaline phosphatase
+molecular
+antithyroid drug
+glycoprotein
+immunoglobulin
+saline
+normal saline
+enzyme
+biogenic
+ribosomal rna
+immunosuppressive
+acetylcholinesterase
+VIP
+ion
+antithyroid agent
+EPO
+amide
+opioid
+CYP2D6
+GPT
+eNOS
+nNOS
+muscarinic
+factor xa
+convulsant
+kinase
+gamma glutamyltransferase
+anticholinesterase drug
+anticoagulant
+insecticide
+analgesic
+renin
+dismutase
+antibiotic
+metabolite
+synthase
+reverse transcriptase
+hormone
+anti-HIV agent
+adenylate
+Pgp
+pgp
+DNA
+salicylate
+juice
+aminotransferase
+PAI
+tissue-type plasminogen activator
+PRL
+opioid alkaloids
+starch
+TAFI
+GOT
+cellulose
+collagenase
+antineoplastic
+protease
+ATT
+glucagon
+antiviral
+transaminases
+SGPT
+antipsychotic
+autoantibodies
+HS
+human chorionic gonadotropin
+CYP3A4
+thrombin
+pesticide
+anticonvulsant
+electron
+ice
+dehydrogenase
+retinal
+mtDNA
+lipid
+insulin
+GH
+cyclohexylamine
+calcineurin
+interleukin 3
+polysaccharide
+oligosaccharide
+adrenocorticotrophic
+receptor antibody
+transaminase
+monoamine oxidase
+antigen
+amylase
+GC
+sugar
+opium poppy plant
+buffer
+gold standard
+atom
+neuronal
+metal
+electrolyte
+luteinizing
+mRNA
+mrna
+carcinogen
+glycogen
+oxidase
+tPA
+nucleic acid polymer
+RT
+IGF
+water
+distilled water
+CD36
+polypeptide
+phosphokinase
+purinergic
+papaver somniferum
+cytokine
+substance
+adrenergic
+antineoplastic agent
+prolactin
+corn oil
+immunosuppressant
+opiate
+antibacterial
+FS
+TAFI antigen
+collagen
+antibody
+catalase
+growth hormone
+carbonic anhydrase
+peroxidase
+GnRH
+essential oil
+tPA antigen
+ACE
+lipopolysaccharide
+myeloperoxidase
+glucocorticoid
+factor viia
+element
+agent
+antihypertensive
+corticosteroid
+mineralocorticoid
+neuroleptic
+antagonist
+salt
+neuroactive
+recreational drug
+drugs of abuse
+toxin
+agonist
+inhibitor
+drug
+olive oil
+sulfate
+hydrochloride
+organic solvent
+corticoid
+alkylating
+poison
+diuretic
+vasodilator
+promoter
+mediator
+alkaloid
+murine
+ethanolic
+fat
+fiber
+polyamine
+RNA
+ACTH
+HMG
+CoA
+LDL
+ASA
+cDNA
+COX-2
+coenzyme A
+NIN

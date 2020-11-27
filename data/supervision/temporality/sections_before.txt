@@ -1,0 +1,22 @@
+# seizure history:
+admitting diagnosis:
+admitting diagnosis:
+allergies:
+domestic violence:
+chief complaint:
+clinical history:
+family history:
+family hx:
+fh:
+history of gallstones:
+major surgical or invasive procedure:
+onc history:
+past gynecological history:
+past medical history is significant for:
+past surgical history:
+prior medical history:
+seizure history:
+sh:
+shx:
+social:
+social history:

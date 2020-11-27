@@ -1,0 +1,30 @@
+tumorigenesis 
+cancerogenesis
+disease
+syndrome
+deficiency
+deficiencies
+complication
+adverse event 
+adverse reaction
+drug interaction
+drug withdrawal
+impairment
+recurrence
+injury
+reaction
+symptom
+leakage
+clinical finding
+disease progression
+toxic effect
+signs and symptoms
+strain
+discomfort
+altered mental status
+metastatic disease
+progressive disease
+pathogenesis
+metastasis
+withdrawal
+relapse

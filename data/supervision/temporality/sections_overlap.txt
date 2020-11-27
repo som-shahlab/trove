@@ -1,0 +1,145 @@
+# basilic vein thrombosis:
+-will discuss with dr. ballard re:
+a.	colon, ascending total abdominal colectomy:
+a.	colon, total abdominal colectomy:
+a. serosa, small bowel implant, biopsy:
+abdm:
+abdomen and pelvis:
+abdominal colon, right hemicolectomy:
+ab:
+abd:
+abd:
+abdomen:
+abdominal x-ray:
+acute renal failure issues:
+aorta:
+aortic valve:
+arterial bp-diastolic:
+arterial bp-systolic:
+ap and lateral chest:
+ap chest radiograph:
+ap chest:
+b.	rectosigmoid proximal anastomotic ring, excision:
+b.	rectum, anus, excision:
+b.	small bowel, excision:
+b. gallbladder, cholecystectomy:
+back:
+billing/primary oncologist:
+bone windows:
+c. congestive heart failure:
+c. rhythm:
+calculated ejection fraction:
+card:
+cardiac:
+cardiac:
+cardiovascular status:
+cardiovascular:
+cat scan abdomen:
+chest x-ray:
+chest x-ray:
+clinical implications:
+cn:
+condition at discharge:
+condition on discharge:
+contents:
+contraindications for iv contrast:
+coordination:
+coronary artery disease:
+cranial nerves:
+ct abd:
+ct of the abdomen:
+ct of the pelvis:
+cv:
+cxr:
+dermatologic:
+discharge condition:
+discharge diagnosis:
+drips:
+electrocardiogram:
+ext:
+ext:
+ext:
+extrem:
+extrem:
+f.	liver, right lobe, partial hepatectomy:
+f.	liver, right lobe, wedge resection:
+final diagnosis:
+final diagnosis
+foot pain:
+fundoscopic exam:
+gastrointestinal:
+gen:
+general:
+general comments:
+genitalia:
+genitourinary:
+gi/abd:
+gram stain:
+groin:
+groin:
+head and neck:
+head ct:
+head, eyes, ears, nose and throat:
+head, eyes, ears, nose, and throat:
+heent:
+hematology:
+hepatic encephalopathy:
+iii, iv, vi:
+imperssion:
+initial physical examination:
+ix, x:
+kub:
+laboratory studies:
+language:
+left atrium:
+left foot x-ray:
+left knee, two views:
+left ventricle:
+lv wall motion:
+medications at home:
+medications:
+mitral valve:
+neuro:
+neurologic exam:
+note added at attending review:
+on cranial nerve exam:
+pain:
+pericardium:
+pernicious anemia issues:
+pertinent laboratory data on admission:
+pertinent radiology/imaging:
+physical exam on admission:
+physical examination on admission:
+physical examination on presentation:
+physical examination today is as follows:
+portable chest:
+post bypass:
+post-cpb:
+pre-cpb:
+preoperative medications:
+pulmonary exam:
+pulmonic valve/pulmonary artery:
+pump:
+radiology:
+radiology/imaging:
+re-evaluate lv function height:
+rectal exam:
+rectal:
+rectal:
+resp:
+respiratory failure:
+rhythm:
+right atrium/interatrial septum:
+right ventricle:
+sensation:
+sensory:
+sternal incision:
+summary of hospital course by issue/system:
+summary of hospital course:
+tricuspid valve:
+upright ap chest:
+urinary tract infection:
+v, vii:
+vent:
+vii:
+xii:

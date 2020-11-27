@@ -1,0 +1,21 @@
+\b(is scheduled)\b
+\b(will be)\b
+\b(will proceed)\b
+\b(will.+meet)\b
+\b(will contact)\b
+\b(going to)\b
+\b(once.+obtained)\b
+\b(once these are obtained)\b
+\b(evaluated for|upcoming|would benefit from|(undergo|requires) a)\b
+\b(if possible)\b
+\b(an approach would be)\b
+\b((she|he) would require)\b
+\b(i would discuss)\b
+\b(we would (be|arrange|set))\b
+\b(it would be)\b
+\b(suggestion for)\b
+patient should (\b[a-z]+\b\s){1,2}follow
+\b(we will proceed)\b
+\b(assuming)\s+(you|she|he)\b
+\b(candidate for|pending)\b
+\b(please call or return (for|if))\b
