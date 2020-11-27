@@ -1,0 +1,50 @@
+LABEL	NAME	TIER	IGNORE_CASE	REGEX	NOTES
+1	otc_drugs	4	1	\b(mouth wash|eye drop|toe cream|stool softener)[es]*\b
+1	insulin_pos	4	1	(lantus [(] insulin glargine [)]|NPH\s*(with)*insulin|insulin (NPH|regular)*\s*(aspart|human)|insulin(\s+(NPH|lispro|regular|regimen|drip|lente|[0-9]+/[0-9]+))*)
+1	insulin_pos	4	1	(((NPH )*humulin|regular|human|lantus|NPH) )*insulin
+1	insulin_pos	4	1	(insulin [0-9]+/[0-9]+( human)*)
+1	insulin_pos	4	1	(insulin\s*NPH|NPH(\s*humulin)*\s*insulin|NPH)
+0	insulin_neg	4	1	(insulin[- ]dependent)
+0	insulin_neg	4	1	((non[- ]*)*insulin[- ]dependent([ ,](diabetes mellitus|diabetes|hypothyroidism))*|non[- ]*insulin|insulin sliding scale)
+1	drugs_1	4	1	(CCB|KCL)
+1	drugs_1	4	1	(vancomycin|levofloxacin|flagyl|iron supplementation)
+1	drugs_1	4	1	(KCL\s*(IMMEDIATE|SLOW)\s*(RELEASE|REL[.]*)|asa)
+1	drugs_1	4	1	(KCL|potassium chloride)\s*(immediate|slow)\s*(release|rel[.]*)
+1	drugs_1	4	1	(chemotherapy|chemo)( regimen[s]*)*
+1	drugs_1	4	1	\b(ACEi|ACE INHIBITORS)\b
+1	drugs_1	4	1	(metamucil\s*(sugar free)*)
+1	drugs_1	4	1	(prednisolone [0-9]{1,2}[%])
+1	drugs_1	4	1	(red blood|red blood cell|rbc|platelet) transfusion[s]*
+1	drugs_1	4	1	(b|beta)[-]*blocker[s]*
+1	drugs_1	4	1	(cardiac|cardiovascular|diabetes|immunosuppressive|pain|copd|(blood\s*)*pressure|oral|outpatient|home|these|your|pressor|pressure)\s*(med(ication|icine)*[s]*)
+1	drugs_1	4	1	(metoprolol xl|kcl immediate release)
+1	vitamin_pos	4	1	(vitamin|vit[.]*)[s]*[- ][abcde][-]*[1-3]*
+0	vitamin_neg	4	1	no ([A-Za-z]+\s*){1,2}(vitamin|vit[.]*)[s]*[- ][abcdek][-]*[1-3]*             
+0	non_drugs	4	1	[0-9]*\s*(to|[-])\s*[0-9]*\s*(red blood cell[s]*)
+0	non_drugs	4	1	(medication[s]*)	Generic mentions of "medications"
+0	non_drugs	4	1	(potassium chloride policy|(cardiac|adenosine|guanosine)[- ]*mibi|mibi)	Drug/chemical mention but not as a prescribed drug
+0	non_drugs	4	1	(o2|oxygen) (saturation|sat)(s)*(\s*[0-9]+[%]*)*	# Oxygen saturation
+0	non_drugs	4	1	((allergy|allergies)\s*[:]\s*([A-Za-z]+[ ,]*)+)	Allergies
+0	non_drugs	4	1	(([A-Za-z]+)\s*){1,2}\s*(cause(s|d)*)\s*([A-Za-z]+)*\s*(rash|headache|nausea|swelling|bleeding|reaction)+	Allergies
+0	non_drugs	4	1	((non[- ]*)*insulin[- ]dependent([ ,](diabetes mellitus|diabetes|hypothyroidism))*|non[- ]*insulin|insulin sliding scale)	diabetes-related insulin mentions
+0	non_drugs	4	1	(diabetes mellitus insulin therapy|insulin toxicity|type 2 diabetes mellitus\s*[,]\s*insulin)	diabetes-related insulin mentions
+0	non_drugs	4	1	(coumadin (clinic|program)|oral medicine|captopril renogram test)	# Proper names
+0	non_drugs	4	1	\( (dose unknown) \)	Parenthetical comments
+1	drugs_2	4	1	(metoprolol\s*(tartrate|sustained release)*|toprol[ -]*(xl)*\s*(\( metoprolol\s*(tartrate)* \))*)
+1	drugs_2	4	1	toprol xl \( (metoprolol\s*(succinate extended release|\( sust[.] rel[.] \))) \)
+1	drugs_2	4	1	(metoprolol xl|kcl immediate release)
+1	drugs_2	4	1	(iron|potassium|folate)\s*(supplement(s|ation)*)
+1	drugs_2	4	1	(steroids|chemotherapy)
+1	drugs_2	4	1	(multi|b|maalox|short)[- ](acting|blocker|tablet|vitamin)[s]*
+1	drugs_2	4	1	(antibiotic|anti[- ]ischemic|diabetic|torsemide|novolog|medication) regimen
+1	drugs_2	4	1	((enteric[- ])*coated\s*(aspirin|asa)|(ecasa|ec asa|enteric coated asa)\s*\( aspirin enteric coated \))
+1	drugs_2	4	1	(insulin (7/30|regular|nph) human)
+1	drugs_2	4	1	(((cardiac|pain|copd|(blood\s*)*pressure|oral|narcotic pain|outpatient|these|your|pressor|pressure)\s*)(medication[s]*))
+1	drugs_2	4	1	((bp|diabetes|sedating|immunosuppressive) (medication|med)[s]*)
+1	drugs_2	4	1	((nitroglycerin\\s*(((sublingual )*tablet|patch|spray|paste)[s]*)*|nitro[ ]*(spray|patch|paste)|ntg|nitro)[es]*\\s*(1/150|(sublingual )*tablet[s]*|spray[s])*)\\s*([(] [0][.][1-9] (mg) [)])*
+1	glue	4	1	(human|nebulizer|liquid|sr|mg|release|rel[.]*|patch|liquid|[.]{3})\s*([)]\s*)+	tail
+1	glue	4	1	\s*(XL|MG|REL[.]*|solution|therapeutic|nebulizer|1/150|70/30)\s*([(]\s*)+	head
+1	glue	4	1	([A-Za-z0-9/.+=-]+\\s*)([0-9/]+\\s*)*[(]\\s*([A-Za-z0-9/.+=-]+\\s*){1,5}\\s*[(]\\s*([A-Za-z0-9/.+=-]+\\s*){1,5}\\s*[)]\\s*[)]	nested (slow!)
+1	glue	4	1	((nitrate|lipitor|niacin|calcium|diuril|lasix|plavix|statin|flagyl|ACEi|coum|levo|dig|asa|mag|BB|k)+[/]){1,3}(nitrate|lipitor|niacin|calcium|diuril|lasix|plavix|statin|flagyl|ACEi|coum|levo|dig|asa|mag|BB|k)+	slash
+1	glue	4	1	((enteric|ACE)\s*[-]|[.]{3}|((quick )*dissolve|chewable|asa)\s*[/]\s*(chewable)*)	punctuation
+

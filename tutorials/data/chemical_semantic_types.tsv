@@ -1,0 +1,128 @@
+TUI	LABEL	STR
+T114	1	Nucleic Acid, Nucleoside, or Nucleotide
+T127	1	Vitamin
+T195	1	Antibiotic
+T131	1	Hazardous or Poisonous Substance
+T196	1	Element, Ion, or Isotope
+T200	1	Clinical Drug
+T104	1	Chemical Viewed Structurally
+T120	1	Chemical Viewed Functionally
+T197	1	Inorganic Chemical
+T103	1	Chemical
+T109	1	Organic Chemical
+T192	-1	Receptor
+T129	-1	Immunologic Factor
+T126	-1	Enzyme
+T125	-1	Hormone
+T130	-1	Indicator, Reagent, or Diagnostic Aid
+T122	-1	Biomedical or Dental Material
+T121	-1	Pharmacologic Substance
+T123	-1	Biologically Active Substance
+T116	-1	Amino Acid, Peptide, or Protein
+T087	-1	Amino Acid Sequence
+T028	-1	Gene or Genome
+T086	-1	Nucleotide Sequence
+T052	0	Activity
+T053	0	Behavior
+T056	0	Daily or Recreational Activity
+T051	0	Event
+T064	0	Governmental or Regulatory Activity
+T055	0	Individual Behavior
+T066	0	Machine Activity
+T057	0	Occupational Activity
+T054	0	Social Behavior
+T017	0	Anatomical Structure
+T029	0	Body Location or Region
+T023	0	Body Part, Organ, or Organ Component
+T030	0	Body Space or Junction
+T031	0	Body Substance
+T022	0	Body System
+T025	0	Cell
+T026	0	Cell Component
+T018	0	Embryonic Structure
+T021	0	Fully Formed Anatomical Structure
+T024	0	Tissue
+T185	0	Classification
+T077	0	Conceptual Entity
+T169	0	Functional Concept
+T102	0	Group Attribute
+T078	0	Idea or Concept
+T170	0	Intellectual Product
+T171	0	Language
+T080	0	Qualitative Concept
+T081	0	Quantitative Concept
+T089	0	Regulation or Law
+T082	0	Spatial Concept
+T079	0	Temporal Concept
+T203	0	Drug Delivery Device
+T074	0	Medical Device
+T075	0	Research Device
+T020	0	Acquired Abnormality
+T190	0	Anatomical Abnormality
+T049	0	Cell or Molecular Dysfunction
+T019	0	Congenital Abnormality
+T047	0	Disease or Syndrome
+T050	0	Experimental Model of Disease
+T033	0	Finding
+T037	0	Injury or Poisoning
+T048	0	Mental or Behavioral Dysfunction
+T191	0	Neoplastic Process
+T046	0	Pathologic Function
+T184	0	Sign or Symptom
+T088	0	Carbohydrate Sequence
+T085	0	Molecular Sequence
+T083	0	Geographic Area
+T100	0	Age Group
+T011	0	Amphibian
+T008	0	Animal
+T194	0	Archaeon
+T007	0	Bacterium
+T012	0	Bird
+T204	0	Eukaryote
+T099	0	Family Group
+T013	0	Fish
+T004	0	Fungus
+T096	0	Group
+T016	0	Human
+T015	0	Mammal
+T001	0	Organism
+T101	0	Patient or Disabled Group
+T002	0	Plant
+T098	0	Population Group
+T097	0	Professional or Occupational Group
+T014	0	Reptile
+T010	0	Vertebrate
+T005	0	Virus
+T071	0	Entity
+T168	0	Food
+T073	0	Manufactured Object
+T072	0	Physical Object
+T167	0	Substance
+T091	0	Biomedical Occupation or Discipline
+T090	0	Occupation or Discipline
+T093	0	Health Care Related Organization
+T092	0	Organization
+T094	0	Professional Society
+T095	0	Self-help or Relief Organization
+T038	0	Biologic Function
+T069	0	Environmental Effect of Humans
+T068	0	Human-caused Phenomenon or Process
+T034	0	Laboratory or Test Result
+T070	0	Natural Phenomenon or Process
+T067	0	Phenomenon or Process
+T043	0	Cell Function
+T201	0	Clinical Attribute
+T045	0	Genetic Function
+T041	0	Mental Process
+T044	0	Molecular Function
+T032	0	Organism Attribute
+T040	0	Organism Function
+T042	0	Organ or Tissue Function
+T039	0	Physiologic Function
+T060	0	Diagnostic Procedure
+T065	0	Educational Activity
+T058	0	Health Care Activity
+T059	0	Laboratory Procedure
+T063	0	Molecular Biology Research Technique
+T062	0	Research Activity
+T061	0	Therapeutic or Preventive Procedure

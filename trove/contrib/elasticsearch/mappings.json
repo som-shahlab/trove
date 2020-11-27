@@ -1,0 +1,128 @@
+{
+  "documents": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0
+    },
+    "mappings": {
+      "properties": {
+        "name": {
+          "type": "keyword"
+        },
+        "mrn": {
+          "type": "keyword"
+        },
+        "encounter": {
+          "type": "keyword"
+        },
+        "note_type": {
+          "type": "keyword"
+        },
+        "created_at": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss"
+        },
+        "modified_at": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss"
+        },
+        "text": {
+          "type": "text"
+        }
+      }
+    }
+  },
+  "sentences": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0
+    },
+    "mappings": {
+      "properties": {
+        "doc_name": {
+          "type": "keyword"
+        },
+        "i": {
+          "type": "integer"
+        },
+        "words": {
+          "type": "keyword"
+        },
+        "abs_char_offsets": {
+          "type": "integer"
+        },
+        "pos_tags": {
+          "type": "keyword"
+        },
+        "text": {
+          "type": "text"
+        }
+      }
+    }
+  },
+  "entities": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0
+    },
+    "mappings": {
+      "properties": {
+        "doc_name": {
+          "type": "keyword"
+        },
+        "doc_created_at": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss"
+        },
+        "doc_modified_at": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss"
+        },
+        "sent_id": {
+          "type": "keyword"
+        },
+        "text": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          }
+        },
+        "abs_char_start": {
+          "type": "integer"
+        },
+        "abs_char_end": {
+          "type": "integer"
+        },
+        "entity_type": {
+          "type": "keyword"
+        },
+        "cid": {
+          "type": "keyword"
+        },
+        "polarity": {
+          "type": "keyword"
+        },
+        "subject": {
+          "type": "keyword"
+        },
+        "hypothetical": {
+          "type": "keyword"
+        },
+        "doc_rela_time": {
+          "type": "keyword"
+        },
+        "section": {
+          "type": "text"
+        },
+        "tdelta": {
+          "type": "integer"
+        },
+        "source": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,149 @@
+TERM	LABEL	GUIDELINE
+adrenergic	0	do_not_annotate_1
+muscarinic	0	do_not_annotate_1
+purinergic	0	do_not_annotate_1
+anti-HIV agent	0	do_not_annotate_2
+anti-HIV agents	0	do_not_annotate_2
+anticholinesterase drug	0	do_not_annotate_2
+anticholinesterase drugs	0	do_not_annotate_2
+anticonvulsant	0	do_not_annotate_2
+anticonvulsants	0	do_not_annotate_2
+antibiotic	0	do_not_annotate_2
+antibiotics	0	do_not_annotate_2
+antibodies	0	do_not_annotate_2
+antibody	0	do_not_annotate_2
+antibodys	0	do_not_annotate_2
+anticholinergic	0	do_not_annotate_2
+anticholinergics	0	do_not_annotate_2
+anticoagulant	0	do_not_annotate_2
+anticoagulants	0	do_not_annotate_2
+antidepressant	0	do_not_annotate_2
+antidepressants	0	do_not_annotate_2
+antiepileptic	0	do_not_annotate_2
+antiepileptic drug	0	do_not_annotate_2
+antiepileptic drugs	0	do_not_annotate_2
+antiepileptics	0	do_not_annotate_2
+antihypertensive	0	do_not_annotate_2
+antihypertensive drug	0	do_not_annotate_2
+antihypertensive drugs	0	do_not_annotate_2
+antihypertensives	0	do_not_annotate_2
+antiinflammatories	0	do_not_annotate_2
+antiinflammatory	0	do_not_annotate_2
+antineoplastic drug	0	do_not_annotate_2
+antineoplastic drugs	0	do_not_annotate_2
+antioxidant	0	do_not_annotate_2
+antioxidants	0	do_not_annotate_2
+antipsychotic	0	do_not_annotate_2
+antipsychotics	0	do_not_annotate_2
+cholinergic agent	0	do_not_annotate_2
+cholinergic agents	0	do_not_annotate_2
+corticosteroid	0	do_not_annotate_2
+corticosteroids	0	do_not_annotate_2
+diuretic	0	do_not_annotate_2
+diuretics	0	do_not_annotate_2
+protease inhibitor	0	do_not_annotate_2
+protease inhibitors	0	do_not_annotate_2
+receptor antagonist	0	do_not_annotate_2
+receptor antagonists	0	do_not_annotate_2
+atom	0	do_not_annotate_3
+ion	0	do_not_annotate_3
+molecular	0	do_not_annotate_3
+lipid	0	do_not_annotate_3
+protein	0	do_not_annotate_3
+gold standard	0	do_not_annotate_4
+protein	0	do_not_annotate_5
+proteins	0	do_not_annotate_5
+polypeptide	0	do_not_annotate_5
+polypeptides	0	do_not_annotate_5
+nucleic acid polymer	0	do_not_annotate_5
+nucleic acid polymers	0	do_not_annotate_5
+oligosaccharide	0	do_not_annotate_5
+oligosaccharides	0	do_not_annotate_5
+polysaccharide	0	do_not_annotate_5
+polysaccharides	0	do_not_annotate_5
+insulin	0	do_not_annotate_5
+DNA	0	do_not_annotate_5
+mRNA	0	do_not_annotate_5
+collagen	0	do_not_annotate_5
+starch	0	do_not_annotate_5
+cellulose	0	do_not_annotate_5
+glycogen	0	do_not_annotate_5
+lipopolysaccharide	0	do_not_annotate_5
+glucocorticoid	0	do_not_annotate_5
+glucagon	0	do_not_annotate_5
+prolactin	0	do_not_annotate_5
+opium poppy plant	0	do_not_annotate_6
+opiate	0	do_not_annotate_6
+opioid	0	do_not_annotate_6
+opioid alkaloid	0	do_not_annotate_6
+opioid alkaloids	0	do_not_annotate_6
+Papaver somniferum	0	do_not_annotate_6
+papaver somniferum	0	do_not_annotate_6
+saline	0	do_not_annotate_7
+water	0	do_not_annotate_7
+juice	0	do_not_annotate_7
+Ca	1	what_to_annotate_1a
+Fe	1	what_to_annotate_1a
+K	1	what_to_annotate_1a
+Li	1	what_to_annotate_1a
+O2	1	what_to_annotate_1a
+amino acid	1	what_to_annotate_1a
+amino acids	1	what_to_annotate_1a
+steroid	1	what_to_annotate_1b
+steroids	1	what_to_annotate_1b
+sucrose	1	what_to_annotate_1b
+sucroses	1	what_to_annotate_1b
+fatty acid	1	what_to_annotate_1b
+fatty acids	1	what_to_annotate_1b
+saturated fatty acid	1	what_to_annotate_1b
+saturated fatty acids	1	what_to_annotate_1b
+glucose	1	what_to_annotate_1c
+glucoses	1	what_to_annotate_1c
+angiotensin II	1	what_to_annotate_1c
+angiotensin IIs	1	what_to_annotate_1c
+angiotensin ii	1	what_to_annotate_1c
+angiotensin iis	1	what_to_annotate_1c
+ATP	1	what_to_annotate_1c
+ATPs	1	what_to_annotate_1c
+cAMP	1	what_to_annotate_1c
+cAMPs	1	what_to_annotate_1c
+polyethylene glycol	1	what_to_annotate_1d
+polyethylene glycols	1	what_to_annotate_1d
+ethanolic extract of daucus carota seed	1	what_to_annotate_1e
+ethanolic extract of daucus carota seeds	1	what_to_annotate_1e
+DCE	1	what_to_annotate_1e
+DCEs	1	what_to_annotate_1e
+grape seed proanthocyanidin extract	1	what_to_annotate_1e
+grape seed proanthocyanidin extracts	1	what_to_annotate_1e
+nitric oxide	1	what_to_annotate_3
+nitric oxides	1	what_to_annotate_3
+antidepressant	1	special_cases
+antidepressant drug	1	special_cases
+antidepressant drugs	1	special_cases
+antidepressants	1	special_cases
+antidepressive agent	1	special_cases
+antidepressive agents	1	special_cases
+estrogen	1	special_cases
+estrogen receptor agonist	1	special_cases
+estrogen receptor agonists	1	special_cases
+estrogenic agent	1	special_cases
+estrogenic agents	1	special_cases
+estrogenic compound	1	special_cases
+estrogenic compounds	1	special_cases
+estrogenic effect	1	special_cases
+estrogenic effects	1	special_cases
+estrogens	1	special_cases
+low-dose oral contraceptive	1	special_cases
+low-dose oral contraceptives	1	special_cases
+oral contraceptive	1	special_cases
+oral contraceptives	1	special_cases
+phasic oral contraceptive	1	special_cases
+phasic oral contraceptives	1	special_cases
+thymoanaleptics	1	special_cases
+thymoanalepticss	1	special_cases
+thymoleptics	1	special_cases
+thymolepticss	1	special_cases
+carbidopa	1	special_cases
+carbidopas	1	special_cases
+levodopa	1	special_cases
+levodopas	1	special_cases
