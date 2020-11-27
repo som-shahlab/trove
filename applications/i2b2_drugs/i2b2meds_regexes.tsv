@@ -21,7 +21,7 @@ LABEL	NAME	TIER	IGNORE_CASE	REGEX	NOTES
 1	vitamin_pos	4	1	(vitamin|vit[.]*)[s]*[- ][abcde][-]*[1-3]*	
 0	vitamin_neg	4	1	no ([A-Za-z]+\s*){1,2}(vitamin|vit[.]*)[s]*[- ][abcdek][-]*[1-3]*	          
 0	non_drugs	4	1	[0-9]*\s*(to|[-])\s*[0-9]*\s*(red blood cell[s]*)	
-0	non_drugs	4	1	(medication[s]*)	Generic mentions of "medications"
+0	non_drugs	4	1	(medication[s]*)	Generic mentions of medications
 0	non_drugs	4	1	(potassium chloride policy|(cardiac|adenosine|guanosine)[- ]*mibi|mibi)	Drug/chemical mention but not as a prescribed drug
 0	non_drugs	4	1	(o2|oxygen) (saturation|sat)(s)*(\s*[0-9]+[%]*)*	Oxygen saturation
 0	non_drugs	4	1	((allergy|allergies)\s*[:]\s*([A-Za-z]+[ ,]*)+)	Allergies
