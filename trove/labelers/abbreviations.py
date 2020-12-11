@@ -1,26 +1,27 @@
-#
-# Labeling function implementation of:
-#
-# "A simple algorithm for identifying abbreviation
-# definitions in biomedical text" Schwartz AS, Hearst MA
-# Computer Science Division, University of California,
-# Berkeley, Berkeley, CA 94720, USA. sariel@cs.berkeley.edu
-#
-# Pac Symp Biocomput. 2003;:451-62.
-#
-# http://psb.stanford.edu/psb-online/proceedings/psb03/abstracts/p451.html
-#
-#
+"""
+Labeling function implementation of  "A simple algorithm for identifying
+abbreviation definitions in biomedical text"
+Schwartz AS, Hearst MA
+Computer Science Division, University of California,
+Berkeley, Berkeley, CA 94720, USA. sariel@cs.berkeley.edu
+
+Pac Symp Biocomput. 2003;:451-62.
+
+http://psb.stanford.edu/psb-online/proceedings/psb03/abstracts/p451.html
+
+TODO: Refactor
+
+"""
 import re
 import collections
+from typing import Set
+from trove.dataloaders.contexts import Span
 from trove.labelers.labeling import (
     LabelingFunction,
     get_word_index_span,
     apply_matcher
 )
-from trove.dataloaders.contexts import Span
-from typing import Set
-
+from typing import List, Set, Dict
 
 def is_short_form(s, min_length=2):
     """ Rule-based function for determining if a token is likely
@@ -44,13 +45,14 @@ def is_short_form(s, min_length=2):
     keep &= "," not in s
     keep &= len(s) < 15
 
-    # reject if too short or contains lowercase single letters
+    # reject if too short too short or contains lowercase single letters
     reject = (len(s) > 3 and not keep)
     reject |= (len(s) <= 3 and re.search("[/,+0-9-]", s) != None)
     reject |= (len(s) < min_length)
-    reject |= (len(s) <= min_length and s.islower())
+    reject |= (len(s) <= min_length and s.islower())  #
 
     return False if reject else True
+
 
 
 def get_parenthetical_short_forms(sentence):
@@ -143,6 +145,9 @@ def extract_long_form(i, sentence, max_dup_chars=2):
 
     offsets = map(lambda x: len(x[0]) + x[1], zip(words, offsets))
     char_end = max(offsets)
+
+    span = Span(char_start, char_end - 1, sentence)
+
     return Span(char_start, char_end - 1, sentence)
 
 
@@ -150,7 +155,7 @@ def get_short_form_index(cand_set):
     '''
     Build a short_form->long_form mapping for each document. Any
     short form (abbreviation, acronym, etc) that appears in parenthetical
-    form is considered a synonym and added to the index. These candidates
+    form is considered a "definition" and added to the index. These candidates
     are then used to augment the features of future mentions with the same
     surface form.
     '''

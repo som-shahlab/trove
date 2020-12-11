@@ -6,6 +6,7 @@ import msgpack
 import sqlite3
 import pandas as pd
 import urllib.request
+from zipfile import ZipFile
 from collections import defaultdict
 
 
@@ -23,7 +24,7 @@ class UMLS:
     https://www.nlm.nih.gov/research/umls/knowledge_sources/metathesaurus
 
     """
-    cache_path = ".trove/umls/"
+    cache_path = "cache/umls/"
 
     def __init__(self, backend, **kwargs):
 
@@ -47,13 +48,6 @@ class UMLS:
         self.tui_to_sty = msgpack.load(
             open(f"{self.cache_path}/tui_to_sty.bin", 'rb'))
 
-    def _apply_transforms(self, term, transforms):
-        for tf in transforms:
-            term = tf(term.strip())
-            if not term:
-                return None
-        return term
-
     def _load_terminologies(self, filter_sabs, type_mapping='TUI'):
 
         if self.backend == 'pandas':
@@ -64,14 +58,14 @@ class UMLS:
 
             for sab, data in df:
                 if sab in filter_sabs:
-                   continue
+                    continue
                 yield sab, data.filter(items=['TERM', type_mapping]).values
 
         elif self.backend == 'sqlite':
             conn = sqlite3.connect(f"{self.cache_path}/umls.db")
             for sab in self.langs:
                 if sab in filter_sabs:
-                   continue
+                    continue
                 sql = f'SELECT term, {type_mapping} ' \
                       f'FROM terminology WHERE sab="{sab}";'
                 cursor = conn.execute(sql)
@@ -119,7 +113,7 @@ class UMLS:
         for sab, data in self._load_terminologies(filter_sabs, type_mapping):
 
             # TODO enforce min constraint here or at SAB level
-            # if len(rows.TERM) < min_dict_size:
+            #if len(data) < min_dict_size:
             #    continue
 
             if sab not in terminologies:
@@ -127,7 +121,7 @@ class UMLS:
 
             # TUI or CUI
             for term, cls_type in data:
-                term = self._apply_transforms(term, transforms)
+                term = UMLS.apply_transforms(term, transforms)
                 if include(term):
                     terminologies[sab][term].add(cls_type)
 
@@ -135,6 +129,14 @@ class UMLS:
             sab: terminologies[sab] for sab in terminologies
             if len(terminologies[sab]) >= min_dict_size
         }
+
+    @staticmethod
+    def apply_transforms(term, transforms):
+        for tf in transforms:
+            term = tf(term.strip())
+            if not term:
+                return None
+        return term
 
     @staticmethod
     def init_sqlite_tables(fpath, dataframe):
@@ -183,12 +185,45 @@ class UMLS:
         shutil.rmtree(cache_path)
         print('UMLS cache reset')
 
-    def init_from_dbconn(self):
+    @staticmethod
+    def init_from_dbconn():
+        """
+        TODO Implement this
+        :return:
+        """
+        ...
 
-        # conn = sqlite3.connect(fpath)
-        sql = """SELECT DISTINCT STR, TUI, SAB, SUPPRESS, MRCONSO.CUI 
-                 FROM MRCONSO, MRSTY 
-                 WHERE MRSTY.CUI=MRCONSO.CUI;"""
+    @staticmethod
+    def init_from_nlm_zip(fpath, outdir=None, backend='pandas'):
+        """
+        Install from NLM source zip file. This requires the 'metathesaurus'
+        version (e.g., umls-2020AB-metathesaurus.zip) which contains the
+        complete RRF file set.
+
+        TODO: Implement 'full' installation for archived UMLS zip files
+
+        :param fpath:
+        :return:
+        """
+        outdir = outdir if outdir else UMLS.cache_path
+        tmp = f'{outdir}/tmp'
+        if not os.path.exists(outdir):
+            os.makedirs(outdir)
+
+        deps = f"({'|'.join(['MRCONSO.RRF', 'MRSTY.RRF', 'MRSAB.RRF'])})"
+
+        with ZipFile('/Users/fries/Downloads/', 'r') as zipfile:
+            # pull out or target file subset
+            subset = [
+                fname for fname in zipfile.namelist()
+                if re.search(deps, fname)
+            ]
+            for fname in subset:
+                zipfile.extract(fname, f'{outdir}/{os.path.basename(fname)}')
+
+
+
+
 
     @staticmethod
     def init_from_rrfs(indir, outdir=None, backend='pandas'):
@@ -202,7 +237,7 @@ class UMLS:
         """
         outdir = outdir if outdir else UMLS.cache_path
         if not os.path.exists(outdir):
-            os.mkdir(outdir)
+            os.makedirs(outdir)
 
         # validate that the UMLS source REFs are provided
         for fname in ['MRCONSO.RRF', 'MRSTY.RRF', 'MRSAB.RRF']:
@@ -216,7 +251,7 @@ class UMLS:
         # Source terminologies - MRSAB.RRF
         sabs = {}
         with open(f'{indir}/MRSAB.RRF', 'r') as fp:
-            for i, line in enumerate(fp):
+            for line in fp:
                 row = line.strip('').split('|')
                 # ignore RSAB version
                 rsab, _, lat, ssn = row[3], row[6], row[19], row[23]
@@ -231,7 +266,7 @@ class UMLS:
         tui_to_sty = {}
         cui_to_tui = defaultdict(set)
         with open(f'{indir}/MRSTY.RRF', 'r') as fp:
-            for i, line in enumerate(fp):
+            for line in fp:
                 row = line.strip('').split('|')
                 cui, tui, sty = row[0], row[1], row[3]
                 cui_to_tui[cui].add(tui)
@@ -243,7 +278,7 @@ class UMLS:
         # MRCONSO.RRF
         with open(f'{indir}/MRCONSO.RRF', 'r') as fp, open(
                 f'{outdir}/concepts.tsv', 'w') as op:
-            op.write(f'SAB\tTUI\tCUI\tTERM\n')
+            op.write('SAB\tTUI\tCUI\tTERM\n')
             for line in fp:
                 row = line.strip().split('|')
                 cui, sab, term = row[0], row[11], row[14]
@@ -270,7 +305,6 @@ class UMLS:
 
         if backend == 'pandas':
             df.to_parquet(f'{outdir}/concepts', partition_cols=['SAB'])
-
         elif backend == 'sqlite':
             UMLS.init_sqlite_tables(f'{outdir}/umls.db', df)
         # cleanup temp files
@@ -281,7 +315,7 @@ class SemanticGroups:
     """
     Load the UMLS Semantic groups
     """
-    def __init__(self, cache_path=".trove/semantic_groups/"):
+    def __init__(self, cache_path="cache/semantic_groups/"):
         if not os.path.exists(cache_path):
             os.makedirs(cache_path)
         if not os.path.exists(f"{cache_path}/SemGroups.txt"):

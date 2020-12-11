@@ -8,7 +8,7 @@ from trove.labelers.matchers import (
     get_longest_matches
 )
 from trove.dataloaders.contexts import Span, Sentence
-from typing import List, Set, Dict, Tuple, Pattern, Match, Iterable, Callable
+from typing import List, Set, Dict
 
 
 ###############################################################################
@@ -28,6 +28,9 @@ class DictionaryLabelingFunction(LabelingFunction):
     """
     Labeling function that applies a dictionary to a sentence and outputs
     span labels. These spans are mapped to tokenized words to generate labels.
+    Dictionaries are unipolar labeling functions, so they only emit the label
+    defined on instantiation.
+
     """
     def __init__(self,
                  name:str,
@@ -36,17 +39,7 @@ class DictionaryLabelingFunction(LabelingFunction):
                  case_sensitive: bool = False,
                  max_ngrams:int = 4,
                  stopwords = None):
-        """
 
-        Parameters
-        ----------
-        name
-        dictionary
-        label
-        case_sensitive
-        max_ngrams
-        stopwords
-        """
         super().__init__(name, label)
         self.case_sensitive = case_sensitive
         self.dictionary = dictionary
@@ -54,23 +47,13 @@ class DictionaryLabelingFunction(LabelingFunction):
         self.stopwords = {} if not stopwords else stopwords
 
     def __call__(self, sentence):
-        """
 
-        Parameters
-        ----------
-        sentence
-
-        Returns
-        -------
-
-        """
         m = apply_matcher(sentence.words,
                           sentence.char_offsets,
                           self.dictionary,
                           max_ngrams=self.max_ngrams,
                           longest_match_only=False,
                           case_sensitive=self.case_sensitive)
-
         L = {}
         for (char_start, char_end), term in m:
             if term.lower() in self.stopwords or term in self.stopwords:
@@ -102,7 +85,7 @@ class OntologyLabelingFunction(LabelingFunction):
     """
     def __init__(self,
                  name: str,
-                 ontology: Set[str],
+                 ontology: Dict[str, np.array],
                  case_sensitive: bool = False,
                  max_ngrams: int = 4,
                  stopwords = None) -> None:
@@ -322,7 +305,7 @@ class SlotFilledOntologyLabelingFunction(LabelingFunction):
         flip = False
         L = {}
         for ((char_start, char_end), term), label in zip(matches, labels):
-            key = term.lower() if term.lower() in self._labels else term
+            #key = term.lower() if term.lower() in self._labels else term
 
             # None labels are treated as abstains
             if not label:

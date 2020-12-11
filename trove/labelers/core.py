@@ -4,31 +4,26 @@ from scipy import sparse
 from functools import partial
 from toolz import partition_all
 from joblib import Parallel, delayed
+from abc import ABCMeta, abstractmethod
 
 
 class Distributed:
 
     def __init__(self, num_workers=1, backend='multiprocessing'):
         self.client = Parallel(n_jobs=num_workers,
-                               backend="multiprocessing",
+                               backend=backend,
                                prefer="processes")
         self.num_workers = num_workers
         print(self.client)
 
 
 class SequenceLabelingServer(Distributed):
-    """
-    TODO make more modular to merge with LabelingServer
-    """
-    def __init__(self, num_workers=1, backend='multiprocessing'):
-        super().__init__(num_workers, backend)
 
     @staticmethod
     def worker(lfs, data):
         return [[lf(x) for lf in lfs] for x in data]
 
     def apply(self, lfs, Xs, block_size=None):
-
         blocks = Xs
         if block_size is None:
             block_size = int(
@@ -58,9 +53,6 @@ class SequenceLabelingServer(Distributed):
 
 
 class LabelingServer(Distributed):
-
-    def __init__(self, num_workers=1, backend='multiprocessing'):
-        super().__init__(num_workers, backend)
 
     @staticmethod
     def worker(lfs, data):
@@ -100,12 +92,9 @@ class LabelingServer(Distributed):
 
 class TaggerPipelineServer(Distributed):
 
-    def __init__(self, num_workers=1, backend='multiprocessing'):
-        super().__init__(num_workers, backend)
-
     @staticmethod
     def worker(pipeline, corpus, ngrams=5):
-        for i, doc in enumerate(corpus):
+        for doc in corpus:
             for name in pipeline:
                 pipeline[name].tag(doc, ngrams=ngrams)
         return corpus
