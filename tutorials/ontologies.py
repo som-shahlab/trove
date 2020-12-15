@@ -9,11 +9,15 @@ def apply_transforms(term, transforms):
             return None
     return term
 
+
+
+ 
 class ChebiDatabase:
     
     _cfg = {
         'url': 'ftp://ftp.ebi.ac.uk/pub/databases/chebi/Flat_file_tab_delimited/names.tsv.gz'
     }
+    _cache_path = "cache/chebi/"
     
     def __init__(self, cache_path, **kwargs):
         self.cache_path = cache_path
