@@ -4,11 +4,11 @@ python:
   - "3.8"
 
 # command to install dependencies
-install:
-  - pip install -r requirements.txt
+#install:
+#  - pip install -r requirements.txt
 
-script:
-  - pytest test
+#script:
+#  - pytest test
 
 notifications:
   email:
