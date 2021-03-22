@@ -1,0 +1,15 @@
+language: python
+
+python:
+  - "3.8"
+
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+
+script:
+  - pytest test
+
+notifications:
+  email:
+  - jason-fries@stanford.edu
