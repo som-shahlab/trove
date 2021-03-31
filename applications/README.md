@@ -1,7 +1,7 @@
-#Applications
+# Applications
 
 
-###NOTE: These are currently being refactored.
+### NOTE: These are currently being refactored.
 
 Labeling functions for various weakly supervised biomedical classification tasks
 
