@@ -1,6 +1,15 @@
 import re
+import os
+import gzip
 import pandas as pd
+import urllib.request
 
+def download(url, outfpath):
+    print(f'downloading {url}')
+    opener = urllib.request.build_opener()
+    opener.addheaders = [("User-agent", "Mozilla/5.0")]
+    urllib.request.install_opener(opener)
+    urllib.request.urlretrieve(url, f"{outfpath}/{os.path.basename(url)}")
 
 def apply_transforms(term, transforms):
     for tf in transforms:
@@ -9,20 +18,30 @@ def apply_transforms(term, transforms):
             return None
     return term
 
-
-
- 
 class ChebiDatabase:
     
-    _cfg = {
+    cfg = {
         'url': 'ftp://ftp.ebi.ac.uk/pub/databases/chebi/Flat_file_tab_delimited/names.tsv.gz'
     }
-    _cache_path = "cache/chebi/"
+    cache_root = "~/.trove/chebi/"
     
-    def __init__(self, cache_path, **kwargs):
-        self.cache_path = cache_path
+    def __init__(self, cache_path=None, **kwargs):
+        self.cache_path = cache_path if cache_path else ChebiDatabase.cache_root
+        self.cache_path = os.path.expanduser(self.cache_path)
+        if not os.path.exists(self.cache_path):
+            os.makedirs(self.cache_path)
+        if not os.path.exists(f'{self.cache_path}/names.tsv'):
+            download(ChebiDatabase.cfg['url'], self.cache_path)
+            with gzip.open(f'{self.cache_path}/names.tsv.gz', 'rb') as fp:
+                with open(f'{self.cache_path}/names.tsv', 'wb') as op:
+                    op.write(fp.read())
+
         self.df = self._load_terminologies(**kwargs)
-        
+
+    @classmethod
+    def config(cls, cache_root):
+        cls.cache_root = cache_root
+
     def terms(self, filter_sources=None):
         
         filter_sources = filter_sources if filter_sources else {}
@@ -56,7 +75,7 @@ class ChebiDatabase:
                    t not in stopwords and \
                    (filter_rgx and not filter_rgx.search(t))
     
-        df = pd.read_csv('/users/fries/downloads/names.tsv', 
+        df = pd.read_csv(f'{self.cache_path}/names.tsv',
                          sep='\t', 
                          na_filter=False, 
                          dtype={'NAME':'object', 'COMPOUND_ID':'object'})
@@ -75,4 +94,3 @@ class ChebiDatabase:
                 if include(term):
                     self.terminologies[source].add(term)
         self.data = df
-        

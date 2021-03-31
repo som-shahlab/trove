@@ -1,12 +1,16 @@
 # Trove 
+--
+<!--[![Build Status](https://travis-ci.com/som-shahlab/trove.svg?branch=main)](https://travis-ci.com/som-shahlab/trove)-->
+<!--[![Documentation Status](https://readthedocs.org/projects/trove/badge/?version=latest)](https://trove.readthedocs.io/en/latest/?badge=latest)-->
+[![license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-**Preprint**: [Trove: Ontology-driven Weak Supervision for Medical Entity Classification](https://arxiv.org/abs/2008.01972)
+Trove is a framework for training weakly supervised (bio)medical named entity recognition (NER) and other entity attribute classifiers without hand-labeled training data. 
 
-See the `manuscript` branch for the preprint's code
+We combine a range of supervision signal common medical ontologies such as the Unified Medical Language System (UMLS), clinical text heuristics, and other noisy labeling sources for use with weak supervision frameworks such as [Snorkel](https://github.com/snorkel-team/snorkel). 
 
-Trove is a weakly supervised framework for training medical named entity recognition (NER) classifiers without hand-labeled training data.
 
-***Trove is actively in-development***. Let us know when you find bugs.
+Technical details are available in our [manuscript] (https://arxiv.org/abs/2008.01972).
+
 
 ## Installation
 
@@ -21,19 +25,7 @@ See `tutorials/`
 Tested on OSX and Linux.
 
 ## Citation
-If use Trove in your research, please cite.
+If use Trove in your research, please cite [Ontology-driven weak supervision for clinical entity classification in electronic health records]()
 
-```bibtex
-@ARTICLE{Fries2020-wg,
-   title    = "Trove: Ontology-driven weak supervision 
-               for medical entity classification",
-   author   = "Fries, Jason A and Steinberg, Ethan and Khattar, Saelig and
-               Fleming, Scott L and Posada, Jose and Callahan, Alison and Shah,
-               Nigam H",
-   journal  = "ArXiv",
-   month    =  aug,
-   year     =  2020,
-   language = "en"
-}
-```
+See the `manuscript` branch for the code used 
 
