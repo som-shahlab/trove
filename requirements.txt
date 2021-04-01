@@ -4,7 +4,7 @@ torch==1.8.0
 requests==2.25.1
 pandas==1.1.5
 scipy==1.5.2
-lxml==4.6.2
+lxml>=4.6.3
 spacy==3.0.5
 numpy==1.19.2
 joblib==1.0.1
