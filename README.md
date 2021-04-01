@@ -5,7 +5,7 @@
 
 Trove is a research framework for building weakly supervised (bio)medical named entity recognition (NER) and other entity attribute classifiers without hand-labeled training data.
 
-The COVID-19 pandemic has underlined the need for faster, more flexible ways of building and sharing state-of-the-art NLP/NLU tools to analyze electronic health records, scientific literature, and social media. Likewise, recent research into language modeling and the dangers of uncurated, ["unfathomably"](https://faculty.washington.edu/ebender/papers/Stochastic_Parrots.pdf) large-scale training data underlines the broader need to approach training set creation iself with more transparency and rigour.  
+The COVID-19 pandemic has underlined the need for faster, more flexible ways of building and sharing state-of-the-art NLP/NLU tools to analyze electronic health records, scientific literature, and social media. Likewise, recent research into language modeling and the dangers of uncurated, ["unfathomably"](https://faculty.washington.edu/ebender/papers/Stochastic_Parrots.pdf) large-scale training data underlines the broader need to approach training set creation itself with more transparency and rigour.  
 
 Trove provides tools for combining freely available supervision sources such as medical ontologies from the [Unified Medical Language System (UMLS)](https://www.nlm.nih.gov/research/umls/index.html), common text heuristics, and other noisy labeling sources for use as entity *labelers* in weak supervision frameworks such as [Snorkel](https://github.com/snorkel-team/snorkel), [FlyingSquid ](https://github.com/HazyResearch/flyingsquid) and others. Technical details are available in our [manuscript](https://www.nature.com/articles/s41467-021-22328-4).
 
@@ -35,7 +35,7 @@ We welcome all contributions to the code base! Please submit a pull request and/
 
 Weakly supervised methods for programatically building and maintaining training sets provides new opportunities for the larger community to participate in the creation of important datasets. This is especially exciting in domains such as medicine, where sharing labeled data is often challening due to patient privacy concerns.
 
-Inspired by recent efforts such as [HuggingFace's Datasets](ttps://github.com/huggingface/datasets) library,
+Inspired by recent efforts such as [HuggingFace's Datasets](https://github.com/huggingface/datasets) library,
 we would love to start a conversation around how to support sharing labelers in service of mantaining an open task library, so that it is easier to create, deploy, and version control weakly supervised models. 
 
 
