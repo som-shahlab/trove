@@ -87,7 +87,7 @@ class OntologyLabelingFunction(LabelingFunction):
                  name: str,
                  ontology: Dict[str, np.array],
                  case_sensitive: bool = False,
-                 max_ngrams: int = 4,
+                 max_ngrams: int = 8,
                  stopwords = None) -> None:
 
         super().__init__(name, None)
@@ -103,9 +103,17 @@ class OntologyLabelingFunction(LabelingFunction):
                 else int(np.argmax(proba) + 1)
         self.ontology = frozenset(ontology)
 
-    def _get_term_label(self, t):
+    def _get_term_label(self, term):
+        """
+        Check for term match, given set of simple transformations
+        (e.g., lowercasing, simple pluralization)
 
-        for key in [t, t.lower(), t.rstrip('s'), t + 's']:
+        TODO: Consider a proper abstraction for handling valid aliases.
+
+        :param term:
+        :return:
+        """
+        for key in [term, term.lower(), term.rstrip('s'), term + 's']:
             if key in self.stopwords:
                 return self.stopwords[key]
             if key in self._labels:
@@ -202,17 +210,12 @@ class SlotFilledOntologyLabelingFunction(LabelingFunction):
         return None
 
     def _merge_matches(self, matches):
-        """ Merge all contiguous spans with the same label.
-
-        Parameters
-        ----------
-        matches
-
-        Returns
-        -------
-
         """
+        Merge all contiguous spans with the same label.
 
+        :param matches:
+        :return:
+        """
         terms = [m[-1] for m in matches]
         labels = [self._get_term_label(m[-1]) for m in matches]
 
@@ -387,7 +390,7 @@ class RegexLabelingFunction(LabelingFunction):
 
 class SynSetLabelingFunction(LabelingFunction):
     """
-    Given a map of TERM -> {t \in SYNONYMS}, if the TERM AND any t
+    Given a map of TERM -> {t \\in SYNONYMS}, if the TERM AND any t
     appear in document, label as a positive instance of the entity.
     """
     def __init__(self,

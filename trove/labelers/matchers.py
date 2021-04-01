@@ -194,9 +194,7 @@ def match_rgx(rgx: Pattern, sentence: Sentence) -> Dict[Tuple, Span]:
 
 
 def get_longest_matches(matches: Dict[Tuple, Span]) -> Iterable[Span]:
-    """
-    TODO: Hack -- rewrite this
-    """
+
     mask = {}
     for key in sorted(matches.keys(), key=lambda x: x[-1], reverse=1):
         is_longest = True

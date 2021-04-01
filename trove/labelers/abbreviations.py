@@ -14,7 +14,6 @@ TODO: Refactor
 """
 import re
 import collections
-from typing import Set
 from trove.dataloaders.contexts import Span
 from trove.labelers.labeling import (
     LabelingFunction,
@@ -23,13 +22,13 @@ from trove.labelers.labeling import (
 )
 from typing import List, Set, Dict
 
-def is_short_form(s, min_length=2):
+def is_short_form(text, min_length=2):
     """ Rule-based function for determining if a token is likely
     an abbreviation, acronym or other "short form" mention
 
     Parameters
     ----------
-    s
+    text
     min_length
 
     Returns
@@ -39,20 +38,19 @@ def is_short_form(s, min_length=2):
     accept_rgx = '[0-9A-Z-]{2,8}[s]*'
     reject_rgx = '([0-9]+/[0-9]+|[0-9]+[-][0-7]+)'
 
-    keep = re.search(accept_rgx, s) != None
-    keep &= re.search(reject_rgx, s) == None
-    keep &= not s.strip("-").isdigit()
-    keep &= "," not in s
-    keep &= len(s) < 15
+    keep = re.search(accept_rgx, text) is not None
+    keep &= re.search(reject_rgx, text) is None
+    keep &= not text.strip("-").isdigit()
+    keep &= "," not in text
+    keep &= len(text) < 15
 
     # reject if too short too short or contains lowercase single letters
-    reject = (len(s) > 3 and not keep)
-    reject |= (len(s) <= 3 and re.search("[/,+0-9-]", s) != None)
-    reject |= (len(s) < min_length)
-    reject |= (len(s) <= min_length and s.islower())  #
+    reject = (len(text) > 3 and not keep)
+    reject |= (len(text) <= 3 and re.search("[/,+0-9-]", text) is not None)
+    reject |= (len(text) < min_length)
+    reject |= (len(text) <= min_length and text.islower())
 
     return False if reject else True
-
 
 
 def get_parenthetical_short_forms(sentence):
@@ -67,10 +65,10 @@ def get_parenthetical_short_forms(sentence):
     -------
 
     """
-    for i, w in enumerate(sentence.words):
+    for i, _ in enumerate(sentence.words):
         if i > 0 and i < len(sentence.words) - 1:
             window = sentence.words[i - 1:i + 2]
-            if (window[0] == "(" and window[-1] == ")"):
+            if window[0] == "(" and window[-1] == ")":
                 if is_short_form(window[1]):
                     yield i
 
@@ -83,7 +81,7 @@ def extract_long_form(i, sentence, max_dup_chars=2):
     short_form = sentence.words[i]
     left_window = [w for w in sentence.words[0:i]]
 
-    # strip brackets/parantheses
+    # strip brackets/parentheses
     while left_window and left_window[-1] in ["(", "[", ":"]:
         left_window.pop()
 

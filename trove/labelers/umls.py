@@ -2,19 +2,29 @@ import os
 import re
 import errno
 import shutil
+import logging
 import msgpack
 import sqlite3
+import hashlib
 import pandas as pd
 import urllib.request
+from pathlib import Path
 from zipfile import ZipFile
 from collections import defaultdict
 
+logger = logging.getLogger(__name__)
 
 ###############################################################################
 #
 # Unified Medical Language System (UMLS)
 # 
 ###############################################################################
+
+UMLS_VERS_MD5_CHECKSUMS = {
+    'cf0699e5ca95d9eabc1a0b3a7f1bfda7': {'release': 'full', 'year':2020, 'version':'AB'},
+    '9bca7282fa4ca6d0544e87628da67ddf': {'release': 'full', 'year':2018, 'version':'AA'},
+    '69d2929e0902e7e42af0b2cb74d5005a': {'release': 'meta', 'year':2020, 'version':'AB'}
+}
 
 class UMLS:
     """
@@ -24,20 +34,43 @@ class UMLS:
     https://www.nlm.nih.gov/research/umls/knowledge_sources/metathesaurus
 
     """
-    cache_path = "cache/umls/"
+    cache_root = "~/.trove/umls"
+    backend = 'pandas'
 
-    def __init__(self, backend, **kwargs):
+    def __init__(self, **kwargs):
 
-        self.backend = backend
-        self.cache_path = kwargs['cache_path'] \
-            if 'cache_path' in kwargs else UMLS.cache_path
+        self.backend = kwargs['backend'] if 'backend' in kwargs \
+            else UMLS.backend
+        self.cache_path = UMLS.get_full_cache_path(
+            kwargs['cache_path'] if 'cache_path' in kwargs
+            else UMLS.cache_root
+        )
+        logger.info("cache_path=%s", self.cache_path)
+        logger.info("backend=%s", self.backend)
+
         self._load_indices()
         self._apply_filters(**kwargs)
 
-    def _load_indices(self):
+    @classmethod
+    def config(cls, cache_root, backend):
+        """
+        Assign new defaults to class member variables.
 
+        :param cache_root:
+        :param backend:
+        :return:
+        """
+        cls.cache_root = cache_root
+        cls.backend = backend
+
+    def _load_indices(self):
+        """
+        Load various pre-generated indices.
+
+        :return:
+        """
         if not UMLS.is_initalized(self.cache_path, self.backend):
-            raise Exception('Please run UMLS.init_form_refs(...)')
+            raise Exception("Error, UMLS not initialized.")
 
         # load mappings
         self.langs = {
@@ -49,7 +82,13 @@ class UMLS:
             open(f"{self.cache_path}/tui_to_sty.bin", 'rb'))
 
     def _load_terminologies(self, filter_sabs, type_mapping='TUI'):
+        """
+        Load pre-generated terminology files.
 
+        :param filter_sabs:
+        :param type_mapping:
+        :return:
+        """
         if self.backend == 'pandas':
             df = pd.read_parquet(
                 f"{self.cache_path}/concepts/",
@@ -71,7 +110,6 @@ class UMLS:
                 cursor = conn.execute(sql)
                 rows = cursor.fetchall()
                 yield sab, rows
-
             conn.close()
 
         else:
@@ -89,6 +127,17 @@ class UMLS:
                        stopwords=None):
         """
         Load concepts file and create transformed terminology dictionaries
+
+        :param type_mapping:
+        :param min_char_len:
+        :param max_tok_len:
+        :param min_dict_size:
+        :param languages:
+        :param transforms:
+        :param filter_sabs:
+        :param filter_rgx:
+        :param stopwords:
+        :return:
         """
         # defaults
         filter_sabs = filter_sabs if filter_sabs else {'SNOMEDCT_VET'}
@@ -131,6 +180,10 @@ class UMLS:
         }
 
     @staticmethod
+    def get_full_cache_path(root_dir=None):
+        return os.path.expanduser(root_dir if root_dir else UMLS.cache_root)
+
+    @staticmethod
     def apply_transforms(term, transforms):
         for tf in transforms:
             term = tf(term.strip())
@@ -140,7 +193,13 @@ class UMLS:
 
     @staticmethod
     def init_sqlite_tables(fpath, dataframe):
+        """
+        Initialize a simple sqlite3 database schema.
 
+        :param fpath:
+        :param dataframe:
+        :return:
+        """
         conn = sqlite3.connect(fpath)
         sql = """CREATE TABLE IF NOT EXISTS terminology (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -167,8 +226,16 @@ class UMLS:
         conn.close()
 
     @staticmethod
-    def is_initalized(cache_path=None, backend='sqlite'):
-        cache_path = cache_path if cache_path else UMLS.cache_path
+    def is_initalized(cache_root=None, backend=None):
+        """
+        Test if the UMLS has been initialized by looking at the cache.
+
+        :param cache_root:
+        :param backend:
+        :return:
+        """
+        cache_path = UMLS.get_full_cache_path(cache_root)
+        backend = backend if backend else UMLS.backend
         filelist = ['sabs.bin', 'tui_to_sty.bin', 'concepts']
         if backend == 'sqlite':
             filelist[-1] = 'umls.db'
@@ -180,10 +247,17 @@ class UMLS:
         return flags.count(True) >= 3
 
     @staticmethod
-    def reset(cache_path=None):
-        cache_path = cache_path if cache_path else UMLS.cache_path
-        shutil.rmtree(cache_path)
-        print('UMLS cache reset')
+    def reset(cache_root=None):
+        """
+        Clear all cached files.
+
+        :param cache_root:
+        :return:
+        """
+        cache_path = UMLS.get_full_cache_path(cache_root)
+        if os.path.exists(cache_path):
+            shutil.rmtree(cache_path)
+            logger.info('UMLS cache reset')
 
     @staticmethod
     def init_from_dbconn():
@@ -194,39 +268,68 @@ class UMLS:
         ...
 
     @staticmethod
-    def init_from_nlm_zip(fpath, outdir=None, backend='pandas'):
+    def init_from_nlm_zip(fpath,
+                          outdir=None,
+                          backend=None,
+                          use_checksum=False,
+                          keep_original_rrfs=False):
         """
         Install from NLM source zip file. This requires the 'metathesaurus'
         version (e.g., umls-2020AB-metathesaurus.zip) which contains the
         complete RRF file set.
 
-        TODO: Implement 'full' installation for archived UMLS zip files
-
         :param fpath:
+        :param outdir:
+        :param backend:
+        :param use_checksum:
+        :param keep_original_rrfs:
         :return:
         """
-        outdir = outdir if outdir else UMLS.cache_path
+        assert os.path.exists(fpath)
+        # determine release
+        # TODO: Checksum test is probably overkill
+        # if use_checksum:
+        #     checksum = hashlib.md5(open(fpath,'rb').read()).hexdigest()
+        #     if checksum not in UMLS_VERS_MD5_CHECKSUMS:
+        #         print("UMLS checksum not found, using string matching rule")
+        #         use_checksum = False
+        #     else:
+        #         print(UMLS_VERS_MD5_CHECKSUMS[checksum])
+        #         release = UMLS_VERS_MD5_CHECKSUMS[checksum]['release']
+        if not use_checksum:
+            release = 'full' if "full" in fpath.split('/')[-1] else 'meta'
+
+        # TODO: Implement 'full' installation for archived UMLS zip files
+        if release == 'full':
+            msg = "Please use UMLS `metathesaurus` zip files, not `full`"
+            raise Exception(msg)
+
+        outdir = UMLS.get_full_cache_path(outdir)
+        backend = backend if backend else UMLS.backend
+
         tmp = f'{outdir}/tmp'
-        if not os.path.exists(outdir):
-            os.makedirs(outdir)
+        if not os.path.exists(tmp):
+            os.makedirs(tmp)
 
+        # extract files from zip
         deps = f"({'|'.join(['MRCONSO.RRF', 'MRSTY.RRF', 'MRSAB.RRF'])})"
+        with ZipFile(fpath, 'r') as zipfile:
+            for fname in zipfile.namelist():
+                if not re.search(deps, fname):
+                    continue
+                outfile = Path(f'{tmp}/{os.path.basename(fname)}')
+                if os.path.exists(outfile):
+                    continue
+                outfile.write_bytes(zipfile.read(fname))
 
-        with ZipFile('/Users/fries/Downloads/', 'r') as zipfile:
-            # pull out or target file subset
-            subset = [
-                fname for fname in zipfile.namelist()
-                if re.search(deps, fname)
-            ]
-            for fname in subset:
-                zipfile.extract(fname, f'{outdir}/{os.path.basename(fname)}')
-
-
-
-
+        # init from RRFs
+        UMLS.init_from_rrfs(tmp, outdir, backend)
+        if not keep_original_rrfs:
+            shutil.rmtree(tmp)
+            logger.info(f"Deleted temporary UMLS files at {tmp}")
 
     @staticmethod
-    def init_from_rrfs(indir, outdir=None, backend='pandas'):
+    def init_from_rrfs(indir, outdir=None, backend=None):
         """
         Initialize UMLS from Rich Release Format (RRF) files
         see https://www.ncbi.nlm.nih.gov/books/NBK9685/
@@ -235,7 +338,8 @@ class UMLS:
         :param outdir:
         :return:
         """
-        outdir = outdir if outdir else UMLS.cache_path
+        outdir = UMLS.get_full_cache_path(outdir)
+        backend = backend if backend else UMLS.backend
         if not os.path.exists(outdir):
             os.makedirs(outdir)
 
@@ -315,7 +419,11 @@ class SemanticGroups:
     """
     Load the UMLS Semantic groups
     """
-    def __init__(self, cache_path="cache/semantic_groups/"):
+    cache_root = "~/.trove/semantic_groups"
+
+    def __init__(self, cache_path=None):
+        cache_path = cache_path if cache_path else SemanticGroups.cache_root
+        cache_path = os.path.expanduser(cache_path)
         if not os.path.exists(cache_path):
             os.makedirs(cache_path)
         if not os.path.exists(f"{cache_path}/SemGroups.txt"):
@@ -327,9 +435,9 @@ class SemanticGroups:
         try:
             url = 'https://semanticnetwork.nlm.nih.gov/download/SemGroups.txt'
             urllib.request.urlretrieve(url, f"{cache_path}/SemGroups.txt")
-            print(f"Downloaded {url}")
+            logger.info(f"Downloaded {url}")
         except Exception as e:
-            print(f"{e} could not download {url}")
+            logger.error(f"{e} could not download {url}")
 
     @property
     def groups(self):

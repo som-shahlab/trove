@@ -1,11 +1,12 @@
+import logging
 import itertools
 import numpy as np
 from scipy import sparse
 from functools import partial
 from toolz import partition_all
 from joblib import Parallel, delayed
-from abc import ABCMeta, abstractmethod
 
+logger = logging.getLogger(__name__)
 
 class Distributed:
 
@@ -14,7 +15,7 @@ class Distributed:
                                backend=backend,
                                prefer="processes")
         self.num_workers = num_workers
-        print(self.client)
+        logger.info(self.client)
 
 
 class SequenceLabelingServer(Distributed):
@@ -29,15 +30,15 @@ class SequenceLabelingServer(Distributed):
             block_size = int(
                 np.ceil(np.sum([len(x) for x in Xs]) / self.num_workers)
             )
-            print(f'auto block size={block_size}')
+            logger.info("auto block size %s", block_size)
 
         if block_size:
             blocks = list(
                 partition_all(block_size, itertools.chain.from_iterable(Xs))
             )
 
-        print(f"Partitioned into {len(blocks)} blocks, "
-              f"{np.unique([len(x) for x in blocks])} sizes")
+        lens = np.unique([len(x) for x in blocks])
+        logger.info("Partitioned into %s blocks %s sizes ", len(blocks), lens)
 
         do = delayed(partial(SequenceLabelingServer.worker, lfs))
         jobs = (do(batch) for batch in blocks)
@@ -67,15 +68,15 @@ class LabelingServer(Distributed):
             block_size = int(
                 np.ceil(np.sum([len(x) for x in Xs]) / self.num_workers)
             )
-            print(f'auto block size={block_size}')
+            logger.info("auto block size %s", block_size)
 
         if block_size:
             blocks = list(
                 partition_all(block_size, itertools.chain.from_iterable(Xs))
             )
 
-        print(f"Partitioned into {len(blocks)} blocks, "
-              f"{np.unique([len(x) for x in blocks])} sizes")
+        lens = np.unique([len(x) for x in blocks])
+        logger.info("Partitioned into %s blocks %s sizes ", len(blocks), lens)
 
         do = delayed(partial(LabelingServer.worker, lfs))
         jobs = (do(batch) for batch in blocks)
