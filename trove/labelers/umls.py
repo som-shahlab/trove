@@ -45,19 +45,30 @@ class UMLS:
             kwargs['cache_path'] if 'cache_path' in kwargs
             else UMLS.cache_root
         )
-        logger.info(f"cache_path= {self.cache_path}")
-        logger.info(f"backend= {self.backend}")
+        logger.info("cache_path=%s", self.cache_path)
+        logger.info("backend=%s", self.backend)
 
         self._load_indices()
         self._apply_filters(**kwargs)
 
     @classmethod
     def config(cls, cache_root, backend):
+        """
+        Assign new defaults to class member variables.
+
+        :param cache_root:
+        :param backend:
+        :return:
+        """
         cls.cache_root = cache_root
         cls.backend = backend
 
     def _load_indices(self):
+        """
+        Load various pre-generated indices.
 
+        :return:
+        """
         if not UMLS.is_initalized(self.cache_path, self.backend):
             raise Exception("Error, UMLS not initialized.")
 
@@ -71,7 +82,13 @@ class UMLS:
             open(f"{self.cache_path}/tui_to_sty.bin", 'rb'))
 
     def _load_terminologies(self, filter_sabs, type_mapping='TUI'):
+        """
+        Load pre-generated terminology files.
 
+        :param filter_sabs:
+        :param type_mapping:
+        :return:
+        """
         if self.backend == 'pandas':
             df = pd.read_parquet(
                 f"{self.cache_path}/concepts/",
@@ -110,6 +127,17 @@ class UMLS:
                        stopwords=None):
         """
         Load concepts file and create transformed terminology dictionaries
+
+        :param type_mapping:
+        :param min_char_len:
+        :param max_tok_len:
+        :param min_dict_size:
+        :param languages:
+        :param transforms:
+        :param filter_sabs:
+        :param filter_rgx:
+        :param stopwords:
+        :return:
         """
         # defaults
         filter_sabs = filter_sabs if filter_sabs else {'SNOMEDCT_VET'}
@@ -165,7 +193,13 @@ class UMLS:
 
     @staticmethod
     def init_sqlite_tables(fpath, dataframe):
+        """
+        Initialize a simple sqlite3 database schema.
 
+        :param fpath:
+        :param dataframe:
+        :return:
+        """
         conn = sqlite3.connect(fpath)
         sql = """CREATE TABLE IF NOT EXISTS terminology (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -193,6 +227,13 @@ class UMLS:
 
     @staticmethod
     def is_initalized(cache_root=None, backend=None):
+        """
+        Test if the UMLS has been initialized by looking at the cache.
+
+        :param cache_root:
+        :param backend:
+        :return:
+        """
         cache_path = UMLS.get_full_cache_path(cache_root)
         backend = backend if backend else UMLS.backend
         filelist = ['sabs.bin', 'tui_to_sty.bin', 'concepts']
@@ -207,6 +248,12 @@ class UMLS:
 
     @staticmethod
     def reset(cache_root=None):
+        """
+        Clear all cached files.
+
+        :param cache_root:
+        :return:
+        """
         cache_path = UMLS.get_full_cache_path(cache_root)
         if os.path.exists(cache_path):
             shutil.rmtree(cache_path)
@@ -232,6 +279,10 @@ class UMLS:
         complete RRF file set.
 
         :param fpath:
+        :param outdir:
+        :param backend:
+        :param use_checksum:
+        :param keep_original_rrfs:
         :return:
         """
         assert os.path.exists(fpath)

@@ -1,0 +1,16 @@
+toolz==0.11.1
+tqdm==4.59.0
+torch==1.8.0
+requests==2.25.1
+pandas==1.1.5
+scipy==1.5.2
+lxml==4.6.2
+spacy==3.0.5
+numpy==1.19.2
+joblib==1.0.1
+msgpack_python==0.5.6
+norm==1.6.0
+pytorch_pretrained_bert==0.6.2
+scikit_learn==0.24.1
+seqeval==1.2.2
+stopwords==1.0.0

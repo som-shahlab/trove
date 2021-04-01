@@ -1,15 +1,26 @@
-.. trove documentation master file, created by
-   sphinx-quickstart on Mon Mar 22 00:23:28 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to trove's documentation!
+Welcome to Trove's documentation!
 =================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+Trove is a research framework for building weakly supervised (bio)medical 
+named entity recognition (NER) and other entity attribute classifiers without hand-labeled training data.
 
+The COVID-19 pandemic has underlined the need for faster, more flexible ways of building 
+and sharing state-of-the-art NLP/NLU tools to analyze electronic health records (EHR), 
+scientific literature, and social media. Trove provides tools for combining freely 
+available supervision sources such as medical ontologies from the Unified Medical 
+Language System (UMLS), common text heuristics, and other noisy labeling sources for use 
+as entity *labelers* in weak supervision frameworks such as Snorkel, FlyingSquid, and 
+others. Technical details are available in our manuscript.
+
+.. autosummary::
+   :toctree: _autosummary
+   :recursive:
+
+   trove
+    
+.. toctree::
+   :maxdepth: 10
+   :caption: Contents:
 
 
 Indices and tables
