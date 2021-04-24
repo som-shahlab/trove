@@ -1,5 +1,5 @@
-from inkfish.labelers.taggers import Tagger
-from inkfish.labelers.taggers.helpers import token_distance, overlaps
+from trove.contrib.labelers.clinical.taggers import Tagger
+from trove.contrib.labelers.clinical.helpers import token_distance, overlaps
 
 
 ###############################################################################

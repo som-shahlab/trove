@@ -1,5 +1,5 @@
 from .helpers import *
-from inkfish.labelers.taggers import *
+from trove.contrib.labelers.clinical.taggers import *
 
 ###############################################################################
 #

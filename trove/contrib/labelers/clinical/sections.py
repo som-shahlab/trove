@@ -1,5 +1,6 @@
 import re
-from .taggers import *
+from collections import defaultdict
+from trove.contrib.labelers.clinical.taggers import Tagger, Ngrams, Span, longest_matches, dict_matcher
 
 
 ###############################################################################
@@ -22,6 +23,8 @@ class SectionHeaderTagger(Tagger):
         self.stop_headers = {} if not stop_headers else stop_headers
         self.header_dict = {} if not header_dict else {'headers':header_dict}
         self.max_token_len = max_token_len
+        self.stop_rgx = r'''(http[s]*)'''
+
         if self.header_dict:
             max_ngrams = max([len(t) for t in self.header_dict])
             self.candgen = Ngrams(n_max=max_ngrams, split_on=None)
@@ -56,6 +59,9 @@ class SectionHeaderTagger(Tagger):
             for match in rgx.finditer(sent.text):
                 span = match.span(group)
                 start, end = span
+                # remove common false positives 
+                if re.search(self.stop_rgx, match.group(), re.I):
+                    continue
                 # remove trailing colon
                 if match.group()[-1] == ':':
                     end -= 1

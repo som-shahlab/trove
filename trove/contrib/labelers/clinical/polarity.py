@@ -1,10 +1,11 @@
 import re
 import numpy as np
 from statistics import mode
-from .helpers import *
-from .taggers import Tagger
 from functools import partial
-from .negex import NegEx
+from trove.contrib.labelers.clinical.helpers import *
+from trove.contrib.labelers.clinical.taggers import Tagger
+from trove.contrib.labelers.clinical.negex import NegEx
+
 
 ABSTAIN = 0
 NEGATED = 1
@@ -526,7 +527,7 @@ class PolarityTagger(Tagger):
                     # logical or
                     elif L.any() and self.label_reduction == 'or':
                         if 1 in L:
-                            span.props[self.prop_name] = 1
+                            span.props[self.prop_name] = self.class_map[1]
 
                     # label matrix
                     elif L.any() and self.label_reduction == 'matrix':

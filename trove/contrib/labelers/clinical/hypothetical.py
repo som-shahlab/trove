@@ -1,5 +1,5 @@
-from inkfish.labelers.taggers.helpers import get_left_span
-from inkfish.labelers.taggers import *
+from trove.contrib.labelers.clinical.helpers import get_left_span
+from trove.contrib.labelers.clinical.taggers import *
 from scipy.stats import mode
 import numpy as np
 

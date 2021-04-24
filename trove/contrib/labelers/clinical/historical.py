@@ -1,9 +1,10 @@
 import datetime
 import numpy as np
-from .helpers import *
-from .taggers import Tagger
 from functools import partial
 from scipy.stats import mode
+from trove.dataloaders.contexts import Span
+from trove.contrib.labelers.clinical.helpers import *
+from trove.contrib.labelers.clinical.taggers import Tagger
 
 
 #################################################################################
@@ -180,7 +181,7 @@ class HistoricalTagger(Tagger):
     """
 
     def __init__(self, targets, label_reduction='or'):
-        self.prop_name = 'historical'
+        self.prop_name = 'past'
         self.targets = targets
         self.label_reduction = label_reduction
 

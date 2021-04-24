@@ -1,5 +1,5 @@
 import re
-from inkfish.data.dataloaders.contexts import Sentence, Span
+from trove.dataloaders.contexts import Sentence, Span
 
 
 def token_distance(a,b):

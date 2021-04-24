@@ -1,11 +1,10 @@
-import datetime
+import numpy as np
 from functools import partial
 from statistics import mode
-import numpy as np
-from .negex import NegEx
-from .helpers import *
-from .taggers import Tagger
 
+from trove.contrib.labelers.clinical.helpers import *
+from trove.contrib.labelers.clinical.taggers import Tagger
+from trove.contrib.labelers.clinical.negex import NegEx
 
 #################################################################################
 #
@@ -121,7 +120,7 @@ class FamilyTagger(Tagger):
                         except:
                             # break ties
                             y = 2
-                        span.props[self.prop_name] = y
+                        span.props[self.prop_name] = self.class_map[y]
 
                     # logical or
                     elif L.any() and self.label_reduction == 'or':

@@ -1,9 +1,10 @@
 import re
 import datetime
 from datetime import timedelta
-from inkfish.data.dataloaders.contexts import Span
-from .taggers import Tagger, longest_matches
 from collections import defaultdict
+from trove.dataloaders.contexts import Span
+from trove.contrib.labelers.clinical.taggers import Tagger
+
 
 ###############################################################################
 #
