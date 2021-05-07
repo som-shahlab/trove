@@ -1,0 +1,199 @@
+LABEL	NAME	TIER	IGNORE_CASE	REGEX	NOTES
+2	regex_before_left	1	1	several weeks prior	
+2	regex_before_left	1	1	on previous exam	
+2	regex_before_left	1	1	resolved	
+2	regex_before_left	1	1	(on |from )?(previous|prior) exam	
+2	regex_before_left	1	1	documented	
+2	regex_before_left	1	1	sequelae of	
+2	regex_before_left	1	1	was diagnosed	
+2	regex_before_left	1	1	has recovered from	
+1	regex_before_overlap_left	1	1	has been \b.+ing\b	
+1	regex_before_overlap_left	1	1	has continued	
+1	regex_before_overlap_left	1	1	has developed	
+1	regex_before_overlap_left	1	1	have developed	
+1	regex_before_overlap_left	1	1	has experienced	
+1	regex_before_overlap_left	1	1	has maintained	
+1	regex_before_overlap_left	1	1	has remained	
+1	regex_before_overlap_left	1	1	has tolerated	
+1	regex_before_overlap_left	1	1	no change	
+1	regex_before_overlap_left	1	1	no major change	
+1	regex_before_overlap_left	1	1	no known cancer(s)?	
+1	regex_before_overlap_left	1	1	\b(she|he)\b does note	
+1	regex_before_overlap_left	1	1	\b(she|he)\b continues to (have|be)?	
+1	regex_before_overlap_left	1	1	\b(she|he)\b has continued 	
+1	regex_before_overlap_left	1	1	\b(she|he)\b.+recovering	
+1	regex_before_overlap_left	1	1	is continuing to recover	
+1	regex_before_overlap_left	1	1	\bis\b.+smoker	
+1	regex_before_overlap_left	1	1	recurrent episodes of	
+3	regex_after_left	1	1	\b(is scheduled)\b	
+3	regex_after_left	1	1	\b(will be)\b	
+3	regex_after_left	1	1	\b(will proceed)\b	
+3	regex_after_left	1	1	\b(will.+meet)\b	
+3	regex_after_left	1	1	\b(will contact)\b	
+3	regex_after_left	1	1	\b(going to)\b	
+3	regex_after_left	1	1	\b(once.+obtained)\b	
+3	regex_after_left	1	1	\b(once these are obtained)\b	
+3	regex_after_left	1	1	\b(evaluated for|upcoming|would benefit from|(undergo|requires) a)\b	
+3	regex_after_left	1	1	\b(if possible)\b	
+3	regex_after_left	1	1	\b(an approach would be)\b	
+3	regex_after_left	1	1	\b((she|he) would require)\b	
+3	regex_after_left	1	1	\b(i would discuss)\b	
+3	regex_after_left	1	1	\b(we would (be|arrange|set))\b	
+3	regex_after_left	1	1	\b(it would be)\b	
+3	regex_after_left	1	1	\b(suggestion for)\b	
+3	regex_after_left	1	1	"patient should (\b[a-z]+\b\s){1,2}follow"	
+3	regex_after_left	1	1	\b(we will proceed)\b	
+3	regex_after_left	1	1	\b(assuming)\s+(you|she|he)\b	
+3	regex_after_left	1	1	\b(candidate for|pending)\b	
+3	regex_after_left	1	1	\b(please call or return (for|if))\b	
+2	word_list_before	1	1	demonstrated	
+0	word_list_overlap	1	1	arranged	
+0	word_list_overlap	1	1	consented	
+0	word_list_overlap	1	1	plan	
+0	word_list_overlap	1	1	requested	
+0	word_list_overlap	1	1	scheduled	
+0	word_sections_overlap	1	1	# basilic vein thrombosis:	
+0	word_sections_overlap	1	1	-will discuss with dr. ballard re:	
+0	word_sections_overlap	1	1	"a.	colon, ascending total abdominal colectomy:"	
+0	word_sections_overlap	1	1	"a.	colon, total abdominal colectomy:"	
+0	word_sections_overlap	1	1	"a. serosa, small bowel implant, biopsy:"	
+0	word_sections_overlap	1	1	abdm:	
+0	word_sections_overlap	1	1	abdomen and pelvis:	
+0	word_sections_overlap	1	1	"abdominal colon, right hemicolectomy:"	
+0	word_sections_overlap	1	1	ab:	
+0	word_sections_overlap	1	1	abd:	
+0	word_sections_overlap	1	1	abd:	
+0	word_sections_overlap	1	1	abdomen:	
+0	word_sections_overlap	1	1	abdominal x-ray:	
+0	word_sections_overlap	1	1	acute renal failure issues:	
+0	word_sections_overlap	1	1	aorta:	
+0	word_sections_overlap	1	1	aortic valve:	
+0	word_sections_overlap	1	1	arterial bp-diastolic:	
+0	word_sections_overlap	1	1	arterial bp-systolic:	
+0	word_sections_overlap	1	1	ap and lateral chest:	
+0	word_sections_overlap	1	1	ap chest radiograph:	
+0	word_sections_overlap	1	1	ap chest:	
+0	word_sections_overlap	1	1	"b.	rectosigmoid proximal anastomotic ring, excision:"	
+0	word_sections_overlap	1	1	"b.	rectum, anus, excision:"	
+0	word_sections_overlap	1	1	"b.	small bowel, excision:"	
+0	word_sections_overlap	1	1	"b. gallbladder, cholecystectomy:"	
+0	word_sections_overlap	1	1	back:	
+0	word_sections_overlap	1	1	billing/primary oncologist:	
+0	word_sections_overlap	1	1	bone windows:	
+0	word_sections_overlap	1	1	c. congestive heart failure:	
+0	word_sections_overlap	1	1	c. rhythm:	
+0	word_sections_overlap	1	1	calculated ejection fraction:	
+0	word_sections_overlap	1	1	card:	
+0	word_sections_overlap	1	1	cardiac:	
+0	word_sections_overlap	1	1	cardiac:	
+0	word_sections_overlap	1	1	cardiovascular status:	
+0	word_sections_overlap	1	1	cardiovascular:	
+0	word_sections_overlap	1	1	cat scan abdomen:	
+0	word_sections_overlap	1	1	chest x-ray:	
+0	word_sections_overlap	1	1	chest x-ray:	
+0	word_sections_overlap	1	1	clinical implications:	
+0	word_sections_overlap	1	1	cn:	
+0	word_sections_overlap	1	1	condition at discharge:	
+0	word_sections_overlap	1	1	condition on discharge:	
+0	word_sections_overlap	1	1	contents:	
+0	word_sections_overlap	1	1	contraindications for iv contrast:	
+0	word_sections_overlap	1	1	coordination:	
+0	word_sections_overlap	1	1	coronary artery disease:	
+0	word_sections_overlap	1	1	cranial nerves:	
+0	word_sections_overlap	1	1	ct abd:	
+0	word_sections_overlap	1	1	ct of the abdomen:	
+0	word_sections_overlap	1	1	ct of the pelvis:	
+0	word_sections_overlap	1	1	cv:	
+0	word_sections_overlap	1	1	cxr:	
+0	word_sections_overlap	1	1	dermatologic:	
+0	word_sections_overlap	1	1	discharge condition:	
+0	word_sections_overlap	1	1	discharge diagnosis:	
+0	word_sections_overlap	1	1	drips:	
+0	word_sections_overlap	1	1	electrocardiogram:	
+0	word_sections_overlap	1	1	ext:	
+0	word_sections_overlap	1	1	ext:	
+0	word_sections_overlap	1	1	ext:	
+0	word_sections_overlap	1	1	extrem:	
+0	word_sections_overlap	1	1	extrem:	
+0	word_sections_overlap	1	1	"f.	liver, right lobe, partial hepatectomy:"	
+0	word_sections_overlap	1	1	"f.	liver, right lobe, wedge resection:"	
+0	word_sections_overlap	1	1	final diagnosis:	
+0	word_sections_overlap	1	1	final diagnosis	
+0	word_sections_overlap	1	1	foot pain:	
+0	word_sections_overlap	1	1	fundoscopic exam:	
+0	word_sections_overlap	1	1	gastrointestinal:	
+0	word_sections_overlap	1	1	gen:	
+0	word_sections_overlap	1	1	general:	
+0	word_sections_overlap	1	1	general comments:	
+0	word_sections_overlap	1	1	genitalia:	
+0	word_sections_overlap	1	1	genitourinary:	
+0	word_sections_overlap	1	1	gi/abd:	
+0	word_sections_overlap	1	1	gram stain:	
+0	word_sections_overlap	1	1	groin:	
+0	word_sections_overlap	1	1	groin:	
+0	word_sections_overlap	1	1	head and neck:	
+0	word_sections_overlap	1	1	head ct:	
+0	word_sections_overlap	1	1	"head, eyes, ears, nose and throat:"	
+0	word_sections_overlap	1	1	"head, eyes, ears, nose, and throat:"	
+0	word_sections_overlap	1	1	heent:	
+0	word_sections_overlap	1	1	hematology:	
+0	word_sections_overlap	1	1	hepatic encephalopathy:	
+0	word_sections_overlap	1	1	"iii, iv, vi:"	
+0	word_sections_overlap	1	1	imperssion:	
+0	word_sections_overlap	1	1	initial physical examination:	
+0	word_sections_overlap	1	1	"ix, x:"	
+0	word_sections_overlap	1	1	kub:	
+0	word_sections_overlap	1	1	laboratory studies:	
+0	word_sections_overlap	1	1	language:	
+0	word_sections_overlap	1	1	left atrium:	
+0	word_sections_overlap	1	1	left foot x-ray:	
+0	word_sections_overlap	1	1	"left knee, two views:"	
+0	word_sections_overlap	1	1	left ventricle:	
+0	word_sections_overlap	1	1	lv wall motion:	
+0	word_sections_overlap	1	1	medications at home:	
+0	word_sections_overlap	1	1	medications:	
+0	word_sections_overlap	1	1	mitral valve:	
+0	word_sections_overlap	1	1	neuro:	
+0	word_sections_overlap	1	1	neurologic exam:	
+0	word_sections_overlap	1	1	note added at attending review:	
+0	word_sections_overlap	1	1	on cranial nerve exam:	
+0	word_sections_overlap	1	1	pain:	
+0	word_sections_overlap	1	1	pericardium:	
+0	word_sections_overlap	1	1	pernicious anemia issues:	
+0	word_sections_overlap	1	1	pertinent laboratory data on admission:	
+0	word_sections_overlap	1	1	pertinent radiology/imaging:	
+0	word_sections_overlap	1	1	physical exam on admission:	
+0	word_sections_overlap	1	1	physical examination on admission:	
+0	word_sections_overlap	1	1	physical examination on presentation:	
+0	word_sections_overlap	1	1	physical examination today is as follows:	
+0	word_sections_overlap	1	1	portable chest:	
+0	word_sections_overlap	1	1	post bypass:	
+0	word_sections_overlap	1	1	post-cpb:	
+0	word_sections_overlap	1	1	pre-cpb:	
+0	word_sections_overlap	1	1	preoperative medications:	
+0	word_sections_overlap	1	1	pulmonary exam:	
+0	word_sections_overlap	1	1	pulmonic valve/pulmonary artery:	
+0	word_sections_overlap	1	1	pump:	
+0	word_sections_overlap	1	1	radiology:	
+0	word_sections_overlap	1	1	radiology/imaging:	
+0	word_sections_overlap	1	1	re-evaluate lv function height:	
+0	word_sections_overlap	1	1	rectal exam:	
+0	word_sections_overlap	1	1	rectal:	
+0	word_sections_overlap	1	1	rectal:	
+0	word_sections_overlap	1	1	resp:	
+0	word_sections_overlap	1	1	respiratory failure:	
+0	word_sections_overlap	1	1	rhythm:	
+0	word_sections_overlap	1	1	right atrium/interatrial septum:	
+0	word_sections_overlap	1	1	right ventricle:	
+0	word_sections_overlap	1	1	sensation:	
+0	word_sections_overlap	1	1	sensory:	
+0	word_sections_overlap	1	1	sternal incision:	
+0	word_sections_overlap	1	1	summary of hospital course by issue/system:	
+0	word_sections_overlap	1	1	summary of hospital course:	
+0	word_sections_overlap	1	1	tricuspid valve:	
+0	word_sections_overlap	1	1	upright ap chest:	
+0	word_sections_overlap	1	1	urinary tract infection:	
+0	word_sections_overlap	1	1	"v, vii:"	
+0	word_sections_overlap	1	1	vent:	
+0	word_sections_overlap	1	1	vii:	
+0	word_sections_overlap	1	1	xii:	
