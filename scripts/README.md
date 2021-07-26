@@ -27,7 +27,7 @@ See `experiments/` for scripts to run NER experiments and specific scripts for c
 This assumes your documents have been preprocessed into a JSON container format. SpaCy tools for parsing documents are found in `preprocessing/`.
 
 ### 1. Generate Label Matrices 
-This applies our labeling functions to  
+This applies our labeling functions to unlabeled documents. 
 
 ```
 python apply-lfs.py \
@@ -44,7 +44,7 @@ python apply-lfs.py \
 ```
 
 ### 2. Train Label Model
-Use the default Snorkel label model to 
+Use the default Snorkel label model to estimate per labeling function accuracies.
 
 ```
 python train-label-model.py \
@@ -58,7 +58,9 @@ python train-label-model.py \
 --seed 1234 > chemical.label_model.log
 ```
 ### 3. Generate Probabilistic Sequence Labels
-Use the default Snorkel label model to 
+Given a trained label model, create a probabalistic sequence labeled dataset for the format (where `|` is a tab delimitter). 
+
+`TOKEN|CLASS_0_PROBA|...|CLASS_N_PROBA|UNMASKED|IOB2_TAG`
 
 ```
 python label-model-proba-conll.py \
@@ -73,11 +75,13 @@ python label-model-proba-conll.py \
 
 ### 4. Train BioBERT End Model
 
+Give the probabalsitic sequence labeled data, train a BERT model. We use BioBERT  in our experiments, but any BERT model (e.g., ClinicalBERT) will also work given the correct PyTorch weights. 
+
 ```
 python proba-train-bert.py \
---train chemical.train.prior_balance.proba.conll.tsv \
---dev chemical.dev.prior_balance.proba.conll.tsv \
---test chemical.test.prior_balance.proba.conll.tsv \
+--train chemical.train.proba.tsv \
+--dev chemical.dev.proba.tsv \
+--test chemical.test.proba.tsv \
 --model biobert_v1.1_pubmed-pytorch/ \
 --device cuda \
 --n_epochs 10 \
