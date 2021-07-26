@@ -284,10 +284,7 @@ class i2b2DrugLabelingFunctions(object):
         chebi_dict = load_chebi_ontology(
             f'{self.data_root}/ontologies/CHEBI/names.tsv', stopwords=sw)
         print(f'Loaded CHEBI')
-
-        # Medi-Span
-        medispan_dict = load_medispan(f'{self.data_root}/ontologies/MEDNAME')
-
+        
         # ---------------------------------------------------------------------
         # Initialize Ontologies
         # ---------------------------------------------------------------------
