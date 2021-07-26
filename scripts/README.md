@@ -7,7 +7,7 @@ Labeling functions for weakly supervised biomedical classification tasks.
 |------------------|------------------|------------|------|-----------------------------------------------|------------|
 | `cdr`        | Chemical, Disease | Literature | NER  | [BioCreative V Chemical-Disease Relation (CDR)](https://biocreative.bioinformatics.udel.edu/tasks/biocreative-v/track-3-cdr/) | Public |
 | `n2c2/i2b2`     | Drug             | Clinical   | NER  | [n2c2/i2b2 2009 Medication Challenge](https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/)           | DUA |
-| `shareclef` | Disorder         | Clinical   | NER  | [ShARe/CLEF 2014]( https://physionet.org/content/shareclefehealth2014task2/1.0/; THYME, https://healthnlp.hms.harvard.edu/center/pages/data-sets.html)                               | DUA |
+| `shareclef` | Disorder         | Clinical   | NER  | [ShARe/CLEF 2014]( https://physionet.org/content/shareclefehealth2014task2/1.0/)                               | DUA |
 
  
 ## I. Quick Start
