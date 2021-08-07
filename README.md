@@ -30,6 +30,10 @@ Requirements: Python 3.6 or later. We recomend using `pip` to install
 
 `pip install -r requirements.txt`
 
+## Experiments
+
+NER experiments from the manuscript are found [here](https://github.com/som-shahlab/trove/tree/manuscript/scripts). We are in the process of refactoring these for easier usage.
+
 ## Contributions
 We welcome all contributions to the code base! Please submit a pull request and/or start a discussion on GitHub Issues.
 
@@ -42,7 +46,7 @@ we would love to start a conversation around how to support sharing labelers in 
 ## Citation
 If use Trove in your research, please cite us!
 
-Fries, J.A., Steinberg, E., Khattar, S. et al. Ontology-driven weak supervision for clinical entity classification in electronic health records. Nat Commun 12, 2017 (2021). https://doi-org.stanford.idm.oclc.org/10.1038/s41467-021-22328-4
+Fries, J.A., Steinberg, E., Khattar, S. et al. [Ontology-driven weak supervision for clinical entity classification in electronic health records](https://www.nature.com/articles/s41467-021-22328-4). Nat Commun 12, 2017 (2021). https://doi.org/10.1038/s41467-021-22328-4
 
 ```
 @article{fries2021trove,
