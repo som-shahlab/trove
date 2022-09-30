@@ -7,7 +7,7 @@ scipy==1.5.2
 lxml>=4.6.3
 spacy==3.0.5
 numpy>=1.22
-joblib==1.0.1
+joblib==1.2.0
 msgpack_python==0.5.6
 norm==1.6.0
 pytorch_pretrained_bert==0.6.2
