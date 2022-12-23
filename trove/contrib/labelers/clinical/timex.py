@@ -466,9 +466,9 @@ class Timex3NormalizerTagger(Tagger):
 
     """
 
-    def __init__(self):
+    def __init__(self, doc_time_prop=None):
+        self.doc_time_prop = doc_time_prop
         self.normalizer = TimexNormalizer()
-
         rgx_today = r'''(today)'''
         self.regexes = [
             (rgx_month_d, self.norm_month_d),
@@ -480,11 +480,16 @@ class Timex3NormalizerTagger(Tagger):
 
         ]
 
+    def get_doctime(self, span):
+        if self.doc_time_prop and \
+            self.doc_time_prop in span.sentence.document.props:
+            return span.sentence.document.props[self.doc_time_prop]
+        return None
 
     def norm_today(self, span):
-        if 'doctime' in span.sentence.document.props:
-            return span.sentence.document.props['doctime']
-        return None
+        
+        return self.get_doctime(span)
+
 
     def norm_x_ago(self, span):
 
@@ -492,7 +497,7 @@ class Timex3NormalizerTagger(Tagger):
                 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10}
 
         try:
-            doctime = span.sentence.document.props['doctime']
+            doctime = self.get_doctime(span)
             if not doctime:
                 return None
 
@@ -548,7 +553,7 @@ class Timex3NormalizerTagger(Tagger):
         """ September 16 """
         try:
 
-            doctime = span.sentence.document.props['doctime']
+            doctime = self.get_doctime(span)
             if not doctime:
                 return None
 
